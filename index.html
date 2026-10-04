@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Nua - Perfumería de Lujo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rojo-vino: #4A0E17;
+            --oro: #D4AF37;
+            --negro: #1A1A1A;
+            --rosa-gol: #B76E79;
+            --verde-pino: #1C2826;
+            --nude: #FAF6F0;
+            --blanco: #FFFFFF;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--nude); color: var(--negro); padding-bottom: 40px; }
+        header { background-color: var(--rojo-vino); color: var(--oro); text-align: center; padding: 25px 15px; border-bottom: 3px solid var(--oro); }
+        header h1 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 5px; }
+        header p { font-size: 0.85rem; color: var(--blanco); opacity: 0.9; }
+        .filters { display: flex; justify-content: center; gap: 8px; padding: 12px; background-color: var(--blanco); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.08); }
+        .filter-btn { background: transparent; border: 1px solid var(--rojo-vino); color: var(--rojo-vino); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
+        .filter-btn.active { background-color: var(--rojo-vino); color: var(--oro); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 15px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+        .card { background: var(--blanco); border-radius: 12px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.4); box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; }
+        .card-header { padding: 15px; border-bottom: 1px solid var(--nude); position: relative; }
+        .badge { position: absolute; top: 15px; right: 15px; padding: 3px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; }
+        .badge-femenino { background-color: var(--rosa-gol); color: var(--blanco); }
+        .badge-masculino { background-color: var(--verde-pino); color: var(--blanco); }
+        .badge-unisex { background-color: var(--oro); color: var(--negro); }
+        .card-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--rojo-vino); padding-right: 60px; }
+        .card-body { padding: 15px; font-size: 0.8rem; flex-grow: 1; }
+        .notes-block { margin-bottom: 10px; }
+        .notes-label { font-weight: 600; color: var(--negro); display: block; margin-bottom: 3px; }
+        .info-row { display: flex; justify-content: space-between; margin-top: 6px; padding-top: 6px; border-top: 1px dashed #E0E0E0; font-size: 0.75rem; }
+        .card-footer { padding: 12px; background-color: var(--nude); }
+        .btn-whatsapp { display: block; width: 100%; padding: 10px; background-color: var(--rojo-vino); color: var(--oro); text-align: center; text-decoration: none; font-weight: 600; font-size: 0.8rem; border-radius: 6px; border: 1px solid var(--oro); }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CATÁLOGO NUA</h1>
+        <p>Perfumería Exclusiva & Fragancias de Lujo</p>
+    </header>
+    <div class="filters">
+        <button class="filter-btn active" onclick="filterPerfumes('todos')">Todos</button>
+        <button class="filter-btn" onclick="filterPerfumes('femenino')">Damas</button>
+        <button class="filter-btn" onclick="filterPerfumes('masculino')">Caballeros</button>
+        <button class="filter-btn" onclick="filterPerfumes('unisex')">Unisex</button>
+    </div>
+    <div class="container" id="perfume-container"></div>
+
+    <script>
+        const PHONE_NUMBER = "573000000000"; // ¡Cambia esto por tu número con código de país!
+        const perfumes = [
+            { id: 1, nombre: "Fakhar Lattafa Gold Extrait", genero: "unisex", notas: "Nardos, notas solares, cáshmeran, haba tonka y ámbar.", ocasion: "Eventos Elegantes / Noche", fijacion: "Extrema (12+ hrs)" },
+            { id: 2, nombre: "Lattafa Khamrah", genero: "unisex", notas: "Canela, nuez moscada, praliné, fechas, vainilla y tonka.", ocasion: "Citas / Noches Frescas", fijacion: "Muy Alta (10-12 hrs)" },
+            { id: 3, nombre: "Lattafa Khamrah Dukhan", genero: "unisex", notas: "Ámbar denso, notas ahumadas, especias cálidas y maderas.", ocasion: "Eventos Nocturnos Exclusivos", fijacion: "Extrema (12+ hrs)" },
+            { id: 4, nombre: "Maison Alhambra Philos Rosso", genero: "unisex", notas: "Rosa, davana, pachulí, clavo, pino y ámbar gris.", ocasion: "Citas / Ocasiones Especiales", fijacion: "Alta (8-10 hrs)" },
+            { id: 5, nombre: "Afnan 9 PM Elixir", genero: "masculino", notas: "Especias finas, maderas profundas, cuero y ámbar.", ocasion: "Fiestas / Salidas Nocturnas", fijacion: "Extrema (12+ hrs)" },
+            { id: 6, nombre: "Rasasi Hawas for Him", genero: "masculino", notas: "Manzana, bergamota, canela, notas marinas y ámbar gris.", ocasion: "Uso Diario / Climas Cálidos", fijacion: "Alta (8-10 hrs)" },
+            { id: 7, nombre: "Nautica Classic", genero: "masculino", notas: "Bergamota, limón, estragón, salvia y sándalo.", ocasion: "Uso Diario / Casual", fijacion: "Moderada (6-8 hrs)" },
+            { id: 8, nombre: "Armaf Legasi Pour Femme", genero: "femenino", notas: "Frutas rojas, jazmín, rosa, ámbar y almizcle.", ocasion: "Oficina / Reuniones Elegantes", fijacion: "Alta (8-10 hrs)" },
+            { id: 9, nombre: "Pepe Jeans For Her", genero: "femenino", notas: "Almendra, leche de coco, marshmallow, vainilla y vodka.", ocasion: "Fiestas / Salidas Juveniles", fijacion: "Alta (8-10 hrs)" },
+            { id: 10, nombre: "Lattafa Noble Blush (Badee Al Oud)", genero: "femenino", notas: "Leche de rosas, merengue, almendra, vainilla y sándalo.", ocasion: "Citas / Eventos de Día", fijacion: "Muy Alta (10-12 hrs)" },
+            { id: 11, nombre: "Armaf Odyssey Artisto (Red Edition)", genero: "masculino", notas: "Cítricos luminosos, especias picantes, lavanda y madera.", ocasion: "Uso Diario Versátil / Noche", fijacion: "Alta (8-10 hrs)" },
+            { id: 12, nombre: "Afnan Lynked Freedom", genero: "unisex", notas: "Notas verdes, cítricos, hierbas aromáticas y madera fina.", ocasion: "Casual / Oficina / Día", fijacion: "Alta (8-10 hrs)" },
+            { id: 13, nombre: "Armaf Ventana Pour Homme", genero: "masculino", notas: "Toronja, bergamota, lavanda, pachulí y cedro.", ocasion: "Trabajo / Citas Casuales", fijacion: "Alta (8-10 hrs)" },
+            { id: 14, nombre: "Lattafa The Kingdom", genero: "femenino", notas: "Flor de azahar, jazmín, vainilla cremosa y ámbar dulce.", ocasion: "Eventos Especiales / Noche", fijacion: "Muy Alta (10-12 hrs)" },
+            { id: 15, nombre: "Armaf Odyssey Eau De Montagne", genero: "unisex", notas: "Notas acuáticas, té verde, bergamota, sándalo y almizcle.", ocasion: "Días Cálidos / Aire Libre", fijacion: "Moderada (6-8 hrs)" },
+            { id: 16, nombre: "Lattafa Habik", genero: "unisex", notas: "Ámbar oriental, resinas valiosas, flores oscuras y madera.", ocasion: "Gala / Citas Románticas", fijacion: "Extrema (12+ hrs)" },
+            { id: 17, nombre: "Armaf Odyssey Mandarin Sky Elixir", genero: "masculino", notas: "Mandarina jugosa, caramelo, haba tonka, salvia y vetiver.", ocasion: "Salidas Nocturnas / Fiestas", fijacion: "Muy Alta (10-12 hrs)" }
+        ];
+
+        function renderPerfumes(data) {
+            const container = document.getElementById('perfume-container');
+            container.innerHTML = '';
+            data.forEach(p => {
+                const textMsg = encodeURIComponent(`¡Hola! Quisiera consultar la disponibilidad de: ${p.nombre}`);
+                const waUrl = `https://wa.me/${PHONE_NUMBER}?text=${textMsg}`;
+                container.innerHTML += `
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="badge badge-${p.genero}">${p.genero}</span>
+                            <h2 class="card-title">${p.nombre}</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="notes-block">
+                                <span class="notes-label">Notas Olfativas:</span>
+                                <p>${p.notas}</p>
+                            </div>
+                            <div class="info-row"><span><strong>Uso:</strong> ${p.ocasion}</span></div>
+                            <div class="info-row"><span><strong>Fijación:</strong> ${p.fijacion}</span></div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="${waUrl}" target="_blank" class="btn-whatsapp">Consultar por WhatsApp</a>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        function filterPerfumes(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderPerfumes(category === 'todos' ? perfumes : perfumes.filter(p => p.genero === category));
+        }
+
+        renderPerfumes(perfumes);
+    </script>
+</body>
+</html>
