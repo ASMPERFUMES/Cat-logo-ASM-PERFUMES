@@ -3,46 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo Nua - Perfumería de Lujo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <title>ASM PERFUMES - Catálogo Exclusivo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --rojo-vino: #4A0E17;
-            --oro: #D4AF37;
-            --negro: #1A1A1A;
-            --rosa-gol: #B76E79;
-            --verde-pino: #1C2826;
-            --nude: #FAF6F0;
-            --blanco: #FFFFFF;
+            --negro-fondo: #0F0E0E;
+            --negro-tarjeta: #161515;
+            --oro-lujo: #D4AF37;
+            --oro-brillo: #F3E5AB;
+            --borgona-profundo: #58111A;
+            --champan: #F5EFEB;
+            --texto-suave: #C5BCB3;
+            --borde-dorado: rgba(212, 175, 55, 0.25);
+            --borde-dorado-brillo: rgba(212, 175, 55, 0.6);
         }
+        
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--nude); color: var(--negro); padding-bottom: 40px; }
-        header { background-color: var(--rojo-vino); color: var(--oro); text-align: center; padding: 25px 15px; border-bottom: 3px solid var(--oro); }
-        header h1 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 5px; }
-        header p { font-size: 0.85rem; color: var(--blanco); opacity: 0.9; }
-        .filters { display: flex; justify-content: center; gap: 8px; padding: 12px; background-color: var(--blanco); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.08); }
-        .filter-btn { background: transparent; border: 1px solid var(--rojo-vino); color: var(--rojo-vino); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
-        .filter-btn.active { background-color: var(--rojo-vino); color: var(--oro); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 15px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
-        .card { background: var(--blanco); border-radius: 12px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.4); box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; }
-        .card-header { padding: 15px; border-bottom: 1px solid var(--nude); position: relative; }
-        .badge { position: absolute; top: 15px; right: 15px; padding: 3px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; }
-        .badge-femenino { background-color: var(--rosa-gol); color: var(--blanco); }
-        .badge-masculino { background-color: var(--verde-pino); color: var(--blanco); }
-        .badge-unisex { background-color: var(--oro); color: var(--negro); }
-        .card-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--rojo-vino); padding-right: 60px; }
-        .card-body { padding: 15px; font-size: 0.8rem; flex-grow: 1; }
-        .notes-block { margin-bottom: 10px; }
-        .notes-label { font-weight: 600; color: var(--negro); display: block; margin-bottom: 3px; }
-        .info-row { display: flex; justify-content: space-between; margin-top: 6px; padding-top: 6px; border-top: 1px dashed #E0E0E0; font-size: 0.75rem; }
-        .card-footer { padding: 12px; background-color: var(--nude); }
-        .btn-whatsapp { display: block; width: 100%; padding: 10px; background-color: var(--rojo-vino); color: var(--oro); text-align: center; text-decoration: none; font-weight: 600; font-size: 0.8rem; border-radius: 6px; border: 1px solid var(--oro); }
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--negro-fondo); 
+            color: var(--champan); 
+            padding-bottom: 50px;
+            background-image: radial-gradient(circle at top, #1c0a0e 0%, var(--negro-fondo) 70%);
+        }
+
+        header { 
+            background: linear-gradient(180deg, rgba(88, 17, 26, 0.6) 0%, rgba(15, 14, 14, 0.95) 100%);
+            color: var(--oro-lujo); 
+            text-align: center; 
+            padding: 35px 20px 25px 20px; 
+            border-bottom: 1px solid var(--borde-dorado);
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 { 
+            font-family: 'Cinzel', serif; 
+            font-size: 2.2rem; 
+            letter-spacing: 4px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--oro-brillo) 0%, var(--oro-lujo) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        header p { 
+            font-size: 0.8rem; 
+            color: var(--texto-suave); 
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .filters { 
+            display: flex; 
+            justify-content: center; 
+            gap: 10px; 
+            padding: 15px; 
+            background-color: rgba(15, 14, 14, 0.85); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .filter-btn { 
+            background: transparent; 
+            border: 1px solid var(--borde-dorado); 
+            color: var(--texto-suave); 
+            padding: 8px 18px; 
+            border-radius: 30px; 
+            font-size: 0.75rem; 
+            font-weight: 500; 
+            letter-spacing: 1px;
+            cursor: pointer; 
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .filter-btn.active, .filter-btn:hover { 
+            background: linear-gradient(135deg, var(--borgona-profundo) 0%, #30080E 100%); 
+            color: var(--oro-brillo); 
+            border-color: var(--oro-lujo);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+        }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px 15px; 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 20px; 
+        }
+
+        .card { 
+            background: var(--negro-tarjeta); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            border: 1px solid var(--borde-dorado); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4); 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--borde-dorado-brillo);
+        }
+
+        .card-img { 
+            width: 100%; 
+            height: 260px; 
+            object-fit: contain; 
+            background: radial-gradient(circle, #252323 0%, #121111 100%); 
+            padding: 15px; 
+            border-bottom: 1px solid var(--borde-dorado); 
+        }
+
+        .card-header { 
+            padding: 18px 15px 10px 15px; 
+            position: relative; 
+        }
+
+        .badge { 
+            position: absolute; 
+            top: 18px; 
+            right: 15px; 
+            padding: 4px 10px; 
+            border-radius: 20px; 
+            font-size: 0.6rem; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            border: 1px solid transparent;
+        }
+
+        .badge-femenino { background: rgba(183, 110, 121, 0.15); color: #E8B4B8; border-color: rgba(183, 110, 121, 0.3); }
+        .badge-masculino { background: rgba(28, 40, 38, 0.4); color: #8FAEA5; border-color: rgba(143, 174, 165, 0.3); }
+        .badge-unisex { background: rgba(212, 175, 55, 0.15); color: var(--oro-brillo); border-color: var(--borde-dorado); }
+
+        .card-title { 
+            font-family: 'Cinzel', serif; 
+            font-size: 1.1rem; 
+            color: var(--champan); 
+            padding-right: 65px; 
+            line-height: 1.3;
+        }
+
+        .card-body { 
+            padding: 0 15px 15px 15px; 
+            font-size: 0.78rem; 
+            flex-grow: 1; 
+        }
+
+        .notes-block { 
+            margin-bottom: 12px; 
+            background: rgba(255, 255, 255, 0.02);
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 2px solid var(--oro-lujo);
+        }
+
+        .notes-label { 
+            font-weight: 600; 
+            color: var(--oro-brillo); 
+            display: block; 
+            margin-bottom: 4px; 
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+        }
+
+        .notes-block p {
+            color: var(--texto-suave);
+            line-height: 1.4;
+        }
+
+        .info-row { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-top: 6px; 
+            padding-top: 6px; 
+            border-top: 1px solid rgba(255, 255, 255, 0.05); 
+            font-size: 0.75rem; 
+            color: var(--texto-suave);
+        }
+
+        .info-row strong {
+            color: var(--champan);
+        }
+
+        .card-footer { 
+            padding: 15px; 
+            background-color: rgba(0, 0, 0, 0.2); 
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .btn-whatsapp { 
+            display: block; 
+            width: 100%; 
+            padding: 12px; 
+            background: linear-gradient(135deg, var(--borgona-profundo) 0%, #3B0910 100%); 
+            color: var(--oro-brillo); 
+            text-align: center; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.75rem; 
+            border-radius: 6px; 
+            border: 1px solid var(--borde-dorado); 
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp:hover {
+            border-color: var(--oro-lujo);
+            box-shadow: 0 0 15px rgba(88, 17, 26, 0.6);
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>CATÁLOGO NUA</h1>
-        <p>Perfumería Exclusiva & Fragancias de Lujo</p>
+        <h1>ASM PERFUMES</h1>
+        <p>Colección Exclusiva & Alta Perfumería</p>
     </header>
     <div class="filters">
         <button class="filter-btn active" onclick="filterPerfumes('todos')">Todos</button>
@@ -53,46 +242,47 @@
     <div class="container" id="perfume-container"></div>
 
     <script>
-        const PHONE_NUMBER = "573018738631"; // ¡Cambia esto por tu número con código de país!
+        const PHONE_NUMBER = "573018738631"; 
         const perfumes = [
-            { id: 1, nombre: "Fakhar Lattafa Gold Extrait", genero: "unisex", notas: "Nardos, notas solares, cáshmeran, haba tonka y ámbar.", ocasion: "Eventos Elegantes / Noche", fijacion: "Extrema (12+ hrs)" },
-            { id: 2, nombre: "Lattafa Khamrah", genero: "unisex", notas: "Canela, nuez moscada, praliné, fechas, vainilla y tonka.", ocasion: "Citas / Noches Frescas", fijacion: "Muy Alta (10-12 hrs)" },
-            { id: 3, nombre: "Lattafa Khamrah Dukhan", genero: "unisex", notas: "Ámbar denso, notas ahumadas, especias cálidas y maderas.", ocasion: "Eventos Nocturnos Exclusivos", fijacion: "Extrema (12+ hrs)" },
-            { id: 4, nombre: "Maison Alhambra Philos Rosso", genero: "unisex", notas: "Rosa, davana, pachulí, clavo, pino y ámbar gris.", ocasion: "Citas / Ocasiones Especiales", fijacion: "Alta (8-10 hrs)" },
-            { id: 5, nombre: "Afnan 9 PM Elixir", genero: "masculino", notas: "Especias finas, maderas profundas, cuero y ámbar.", ocasion: "Fiestas / Salidas Nocturnas", fijacion: "Extrema (12+ hrs)" },
-            { id: 6, nombre: "Rasasi Hawas for Him", genero: "masculino", notas: "Manzana, bergamota, canela, notas marinas y ámbar gris.", ocasion: "Uso Diario / Climas Cálidos", fijacion: "Alta (8-10 hrs)" },
-            { id: 7, nombre: "Nautica Classic", genero: "masculino", notas: "Bergamota, limón, estragón, salvia y sándalo.", ocasion: "Uso Diario / Casual", fijacion: "Moderada (6-8 hrs)" },
-            { id: 8, nombre: "Armaf Legasi Pour Femme", genero: "femenino", notas: "Frutas rojas, jazmín, rosa, ámbar y almizcle.", ocasion: "Oficina / Reuniones Elegantes", fijacion: "Alta (8-10 hrs)" },
-            { id: 9, nombre: "Pepe Jeans For Her", genero: "femenino", notas: "Almendra, leche de coco, marshmallow, vainilla y vodka.", ocasion: "Fiestas / Salidas Juveniles", fijacion: "Alta (8-10 hrs)" },
-            { id: 10, nombre: "Lattafa Noble Blush (Badee Al Oud)", genero: "femenino", notas: "Leche de rosas, merengue, almendra, vainilla y sándalo.", ocasion: "Citas / Eventos de Día", fijacion: "Muy Alta (10-12 hrs)" },
-            { id: 11, nombre: "Armaf Odyssey Artisto (Red Edition)", genero: "masculino", notas: "Cítricos luminosos, especias picantes, lavanda y madera.", ocasion: "Uso Diario Versátil / Noche", fijacion: "Alta (8-10 hrs)" },
-            { id: 12, nombre: "Afnan Lynked Freedom", genero: "unisex", notas: "Notas verdes, cítricos, hierbas aromáticas y madera fina.", ocasion: "Casual / Oficina / Día", fijacion: "Alta (8-10 hrs)" },
-            { id: 13, nombre: "Armaf Ventana Pour Homme", genero: "masculino", notas: "Toronja, bergamota, lavanda, pachulí y cedro.", ocasion: "Trabajo / Citas Casuales", fijacion: "Alta (8-10 hrs)" },
-            { id: 14, nombre: "Lattafa The Kingdom", genero: "femenino", notas: "Flor de azahar, jazmín, vainilla cremosa y ámbar dulce.", ocasion: "Eventos Especiales / Noche", fijacion: "Muy Alta (10-12 hrs)" },
-            { id: 15, nombre: "Armaf Odyssey Eau De Montagne", genero: "unisex", notas: "Notas acuáticas, té verde, bergamota, sándalo y almizcle.", ocasion: "Días Cálidos / Aire Libre", fijacion: "Moderada (6-8 hrs)" },
-            { id: 16, nombre: "Lattafa Habik", genero: "unisex", notas: "Ámbar oriental, resinas valiosas, flores oscuras y madera.", ocasion: "Gala / Citas Románticas", fijacion: "Extrema (12+ hrs)" },
-            { id: 17, nombre: "Armaf Odyssey Mandarin Sky Elixir", genero: "masculino", notas: "Mandarina jugosa, caramelo, haba tonka, salvia y vetiver.", ocasion: "Salidas Nocturnas / Fiestas", fijacion: "Muy Alta (10-12 hrs)" }
+            { id: 1, nombre: "Fakhar Lattafa Gold Extrait", genero: "unisex", notas: "Nardos, notas solares, cáshmeran, haba tonka y ámbar.", ocasion: "Eventos Elegantes / Noche", fijacion: "Extrema (12+ hrs)", img: "https://via.placeholder.com/300?text=Fakhar+Gold" },
+            { id: 2, nombre: "Lattafa Khamrah", genero: "unisex", notas: "Canela, nuez moscada, praliné, fechas, vainilla y tonka.", ocasion: "Citas / Noches Frescas", fijacion: "Muy Alta (10-12 hrs)", img: "https://via.placeholder.com/300?text=Khamrah" },
+            { id: 3, nombre: "Lattafa Khamrah Dukhan", genero: "unisex", notas: "Ámbar denso, notas ahumadas, especias cálidas y maderas.", ocasion: "Eventos Nocturnos Exclusivos", fijacion: "Extrema (12+ hrs)", img: "https://via.placeholder.com/300?text=Khamrah+Dukhan" },
+            { id: 4, nombre: "Maison Alhambra Philos Rosso", genero: "unisex", notas: "Rosa, davana, pachulí, clavo, pino y ámbar gris.", ocasion: "Citas / Ocasiones Especiales", fijacion: "Alta (8-10 hrs)", img: "https://via.placeholder.com/300?text=Philos+Rosso" },
+            { id: 5, nombre: "Afnan 9 PM Elixir", genero: "masculino", notas: "Especias finas, maderas profundas, cuero y ámbar.", ocasion: "Fiestas / Salidas Nocturnas", fijacion: "Extrema (12+ hrs)", img: "https://via.placeholder.com/300?text=9+PM+Elixir" },
+            { id: 6, nombre: "Rasasi Hawas for Him", genero: "masculino", notas: "Manzana, bergamota, canela, notas marinas y ámbar gris.", ocasion: "Uso Diario / Climas Cálidos", fijacion: "Alta (8-10 hrs)", img: "https://via.placeholder.com/300?text=Hawas" },
+            { id: 7, nombre: "Nautica Classic", genero: "masculino", notas: "Bergamota, limón, estragón, salvia y sándalo.", ocasion: "Uso Diario / Casual", fijacion: "Moderada (6-8 hrs)", img: "https://via.placeholder.com/300?text=Nautica+Classic" },
+            { id: 8, nombre: "Armaf Legasi Pour Femme", genero: "femenino", notas: "Frutas rojas, jazmín, rosa, ámbar y almizcle.", ocasion: "Oficina / Reuniones Elegantes", fijacion: "Alta (8-10 hrs)", img: "https://via.placeholder.com/300?text=Legasi+Femme" },
+            { id: 9, nombre: "Pepe Jeans For Her", genero: "femenino", notas: "Almendra, leche de coco, marshmallow, vainilla y vodka.", ocasion: "Fiestas / Salidas Juveniles", fijacion: "Alta (8-10 hrs)", img: "https://via.placeholder.com/300?text=Pepe+Jeans" },
+            { id: 10, nombre: "Lattafa Noble Blush (Badee Al Oud)", genero: "femenino", notas: "Leche de rosas, merengue, almendra, vainilla y sándalo.", ocasion: "Citas / Eventos de Día", fijacion: "Muy Alta (10-12 hrs)", img: "https://via.placeholder.com/300?text=Noble+Blush" },
+            { id: 11, nombre: "Armaf Odyssey Artisto (Red Edition)", genero: "masculino", notas: "Cítricos luminosos, especias picantes, lavanda y madera.", ocasion: "Uso Diario Versátil / Noche", fijacion: "Alta (8-10 hrs)", img: "https://via.placeholder.com/300?text=Odyssey+Red" },
+            { id: 12, nombre: "Afnan Lynked Freedom", genero: "unisex", notas: "Notas verdes, cítricos, hierbas aromáticas y madera fina.", ocasion: "Casual / Oficina / Día", fijacion: "Alta (8-10 hrs)", img: "https://via.placeholder.com/300?text=Lynked+Freedom" },
+            { id: 13, nombre: "Armaf Ventana Pour Homme", genero: "masculino", notas: "Toronja, bergamota, lavanda, pachulí y cedro.", ocasion: "Trabajo / Citas Casuales", fijacion: "Alta (8-10 hrs)", img: "https://via.placeholder.com/300?text=Ventana" },
+            { id: 14, nombre: "Lattafa The Kingdom", genero: "femenino", notas: "Flor de azahar, jazmín, vainilla cremosa y ámbar dulce.", ocasion: "Eventos Especiales / Noche", fijacion: "Muy Alta (10-12 hrs)", img: "https://via.placeholder.com/300?text=The+Kingdom" },
+            { id: 15, nombre: "Armaf Odyssey Eau De Montagne", genero: "unisex", notas: "Notas acuáticas, té verde, bergamota, sándalo y almizcle.", ocasion: "Días Cálidos / Aire Libre", fijacion: "Moderada (6-8 hrs)", img: "https://via.placeholder.com/300?text=Eau+De+Montagne" },
+            { id: 16, nombre: "Lattafa Habik", genero: "unisex", notas: "Ámbar oriental, resinas valiosas, flores oscuras y madera.", ocasion: "Gala / Citas Románticas", fijacion: "Extrema (12+ hrs)", img: "https://via.placeholder.com/300?text=Habik" },
+            { id: 17, nombre: "Armaf Odyssey Mandarin Sky Elixir", genero: "masculino", notas: "Mandarina jugosa, caramelo, haba tonka, salvia y vetiver.", ocasion: "Salidas Nocturnas / Fiestas", fijacion: "Muy Alta (10-12 hrs)", img: "https://via.placeholder.com/300?text=Mandarin+Sky" }
         ];
 
         function renderPerfumes(data) {
             const container = document.getElementById('perfume-container');
             container.innerHTML = '';
             data.forEach(p => {
-                const textMsg = encodeURIComponent(`¡Hola! Quisiera consultar la disponibilidad de: ${p.nombre}`);
+                const textMsg = encodeURIComponent(`¡Hola ASM PERFUMES! Quisiera consultar disponibilidad de: ${p.nombre}`);
                 const waUrl = `https://wa.me/${PHONE_NUMBER}?text=${textMsg}`;
                 container.innerHTML += `
                     <div class="card">
+                        <img src="${p.img}" alt="${p.nombre}" class="card-img">
                         <div class="card-header">
                             <span class="badge badge-${p.genero}">${p.genero}</span>
                             <h2 class="card-title">${p.nombre}</h2>
                         </div>
                         <div class="card-body">
                             <div class="notes-block">
-                                <span class="notes-label">Notas Olfativas:</span>
+                                <span class="notes-label">Notas Olfativas</span>
                                 <p>${p.notas}</p>
                             </div>
-                            <div class="info-row"><span><strong>Uso:</strong> ${p.ocasion}</span></div>
-                            <div class="info-row"><span><strong>Fijación:</strong> ${p.fijacion}</span></div>
+                            <div class="info-row"><span>Uso:</span> <strong>${p.ocasion}</strong></div>
+                            <div class="info-row"><span>Fijación:</span> <strong>${p.fijacion}</strong></div>
                         </div>
                         <div class="card-footer">
                             <a href="${waUrl}" target="_blank" class="btn-whatsapp">Consultar por WhatsApp</a>
