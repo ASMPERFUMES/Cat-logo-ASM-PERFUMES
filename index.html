@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASMperfumes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --fondo-crema: #F5EFEB;
@@ -135,7 +135,7 @@
             color: #FFFFFF; 
         }
 
-        /* --- MENÚ DESPLEGABLE LATERAL (DRAWER) --- */
+        /* --- MENÚ DESPLEGABLE LATERAL --- */
         .side-menu-overlay {
             position: fixed;
             top: 0;
@@ -273,7 +273,7 @@
         }
 
         .card-body { 
-            padding: 10px 15px 15px 15px; 
+            padding: 10px 15px 10px 15px; 
             font-size: 0.8rem; 
             flex-grow: 1; 
         }
@@ -314,8 +314,18 @@
             color: var(--texto-principal);
         }
 
+        /* ESTILO DEL PRECIO */
+        .card-price {
+            text-align: center;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--bronce-oscuro);
+            padding: 6px 15px 0 15px;
+            letter-spacing: 0.5px;
+        }
+
         .card-footer { 
-            padding: 12px 15px 15px 15px; 
+            padding: 10px 15px 15px 15px; 
             background-color: var(--blanco-tarjeta); 
         }
 
@@ -363,7 +373,7 @@
             transform: scale(1.08);
         }
 
-        /* --- PIE DE PÁGINA CON COLORES OFICIALES DE MARCA --- */
+        /* --- PIE DE PÁGINA --- */
         footer {
             background-color: var(--blanco-tarjeta);
             border-top: 1px solid var(--borde-suave);
@@ -411,20 +421,17 @@
             fill: #FFFFFF;
         }
 
-        /* BOTÓN INSTAGRAM OFICIAL */
         .btn-instagram {
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             color: #FFFFFF;
         }
 
-        /* BOTÓN TIKTOK OFICIAL */
         .btn-tiktok {
             background-color: #000000;
             color: #FFFFFF;
             border: 1px solid #222;
         }
 
-        /* BOTÓN CORREO OFICIAL */
         .btn-email {
             background-color: #EA4335;
             color: #FFFFFF;
@@ -487,7 +494,7 @@
         </svg>
     </a>
 
-    <!-- PIE DE PÁGINA CON REDES CON COLORES OFICIALES -->
+    <!-- PIE DE PÁGINA -->
     <footer>
         <h3>ASMperfumes</h3>
         <p>Síguenos en nuestras redes sociales o contáctanos</p>
@@ -515,25 +522,25 @@
     <script>
         const PHONE_NUMBER = "573018738631"; 
         
-        // BASE DE DATOS EXACTA DE IMÁGENES
+        // BASE DE DATOS DE PERFUMES CON PRECIOS Y MANTENIENDO LAS IMÁGENES EXACTAS
         const perfumes = [
-            { id: 1, nombre: "Fakhar Lattafa Gold Extrait", genero: "unisex", notas: "Nardos, notas solares, cáshmeran, haba tonka y ámbar.", ocasion: "Eventos Elegantes / Noche", fijacion: "Extrema (12+ hrs)", img: "fakhar.jpg" },
-            { id: 2, nombre: "Lattafa Khamrah", genero: "unisex", notas: "Canela, nuez moscada, praliné, fechas, vainilla y tonka.", ocasion: "Citas / Noches Frescas", fijacion: "Muy Alta (10-12 hrs)", img: "KHAMRAH.JPG" },
-            { id: 3, nombre: "Lattafa Khamrah Dukhan", genero: "unisex", notas: "Ámbar denso, notas ahumadas, especias cálidas y maderas.", ocasion: "Eventos Nocturnos Exclusivos", fijacion: "Extrema (12+ hrs)", img: "khamrahdukham.jpg" },
-            { id: 4, nombre: "Maison Alhambra Philos Rosso", genero: "femenino", notas: "Rosa, davana, pachulí, clavo, pino y ámbar gris.", ocasion: "Citas / Ocasiones Especiales", fijacion: "Alta (8-10 hrs)", img: "PHILOS.JPG" },
-            { id: 5, nombre: "Afnan 9 PM Elixir", genero: "masculino", notas: "Especias finas, maderas profundas, cuero y ámbar.", ocasion: "Fiestas / Salidas Nocturnas", fijacion: "Extrema (12+ hrs)", img: "9PMELIXIR.JPG" },
-            { id: 6, nombre: "Rasasi Hawas for Him", genero: "masculino", notas: "Manzana, bergamota, canela, notas marinas y ámbar gris.", ocasion: "Uso Diario / Climas Cálidos", fijacion: "Alta (8-10 hrs)", img: "hawasforhim.jpg" },
-            { id: 7, nombre: "Nautica Classic", genero: "masculino", notas: "Bergamota, limón, estragón, salvia y sándalo.", ocasion: "Uso Diario / Casual", fijacion: "Moderada (6-8 hrs)", img: "NAUTICACLASSIC.JPG" },
-            { id: 8, nombre: "Armaf Legasi Pour Femme", genero: "femenino", notas: "Frutas rojas, jazmín, rosa, ámbar y almizcle.", ocasion: "Oficina / Reuniones Elegantes", fijacion: "Alta (8-10 hrs)", img: "LEGESIPOURFEMME.JPG" },
-            { id: 9, nombre: "Pepe Jeans For Her", genero: "femenino", notas: "Almendra, leche de coco, marshmallow, vainilla y vodka.", ocasion: "Fiestas / Salidas Juveniles", fijacion: "Alta (8-10 hrs)", img: "PEPEJEANSFORHER.JPG" },
-            { id: 10, nombre: "Lattafa Noble Blush (Badee Al Oud)", genero: "femenino", notas: "Leche de rosas, merengue, almendra, vainilla y sándalo.", ocasion: "Citas / Eventos de Día", fijacion: "Muy Alta (10-12 hrs)", img: "noblebush.jpg" },
-            { id: 11, nombre: "Armaf Odyssey Artisto (Red Edition)", genero: "masculino", notas: "Cítricos luminosos, especias picantes, lavanda y madera.", ocasion: "Uso Diario Versátil / Noche", fijacion: "Alta (8-10 hrs)", img: "ARTISTO.JPG" },
-            { id: 12, nombre: "Afnan Lynked Freedom", genero: "masculino", notas: "Notas verdes, cítricos, hierbas aromáticas y madera fina.", ocasion: "Casual / Oficina / Día", fijacion: "Alta (8-10 hrs)", img: "LYNKED.JPG" },
-            { id: 13, nombre: "Armaf Ventana Pour Homme", genero: "masculino", notas: "Toronja, bergamota, lavanda, pachulí y cedro.", ocasion: "Trabajo / Citas Casuales", fijacion: "Alta (8-10 hrs)", img: "VENTANA.JPG" },
-            { id: 14, nombre: "Lattafa The Kingdom", genero: "femenino", notas: "Flor de azahar, jazmín, vainilla cremosa y ámbar dulce.", ocasion: "Eventos Especiales / Noche", fijacion: "Muy Alta (10-12 hrs)", img: "THEKINGDOM.JPG" },
-            { id: 15, nombre: "Armaf Odyssey Eau De Montagne", genero: "masculino", notas: "Notas acuáticas, té verde, bergamota, sándalo y almizcle.", ocasion: "Días Cálidos / Aire Libre", fijacion: "Moderada (6-8 hrs)", img: "MONTAGNE.JPG" },
-            { id: 16, nombre: "Lattafa Habik", genero: "masculino", notas: "Ámbar oriental, resinas valiosas, flores oscuras y madera.", ocasion: "Gala / Citas Románticas", fijacion: "Extrema (12+ hrs)", img: "HABIK.JPG" },
-            { id: 17, nombre: "Armaf Odyssey Mandarin Sky Elixir", genero: "unisex", notas: "Mandarina jugosa, caramelo, haba tonka, salvia y vetiver.", ocasion: "Salidas Nocturnas / Fiestas", fijacion: "Muy Alta (10-12 hrs)", img: "MANDARINSKYELIXIR.JPG" }
+            { id: 1, nombre: "Fakhar Lattafa Gold Extrait", genero: "unisex", precio: "$ 190.000", notas: "Nardos, notas solares, cáshmeran, haba tonka y ámbar.", ocasion: "Eventos Elegantes / Noche", fijacion: "Extrema (12+ hrs)", img: "fakhar.jpg" },
+            { id: 2, nombre: "Lattafa Khamrah", genero: "unisex", precio: "$ 180.000", notas: "Canela, nuez moscada, praliné, fechas, vainilla y tonka.", ocasion: "Citas / Noches Frescas", fijacion: "Muy Alta (10-12 hrs)", img: "KHAMRAH.JPG" },
+            { id: 3, nombre: "Lattafa Khamrah Dukhan", genero: "unisex", precio: "$ 220.000", notas: "Ámbar denso, notas ahumadas, especias cálidas y maderas.", ocasion: "Eventos Nocturnos Exclusivos", fijacion: "Extrema (12+ hrs)", img: "khamrahdukham.jpg" },
+            { id: 4, nombre: "Maison Alhambra Philos Rosso", genero: "unisex", precio: "$ 185.000", notas: "Rosa, davana, pachulí, clavo, pino y ámbar gris.", ocasion: "Citas / Ocasiones Especiales", fijacion: "Alta (8-10 hrs)", img: "PHILOS.JPG" },
+            { id: 5, nombre: "Afnan 9 PM Elixir", genero: "masculino", precio: "$ 250.000", notas: "Especias finas, maderas profundas, cuero y ámbar.", ocasion: "Fiestas / Salidas Nocturnas", fijacion: "Extrema (12+ hrs)", img: "9PMELIXIR.JPG" },
+            { id: 6, nombre: "Rasasi Hawas for Him", genero: "masculino", precio: "$ 230.000", notas: "Manzana, bergamota, canela, notas marinas y ámbar gris.", ocasion: "Uso Diario / Climas Cálidos", fijacion: "Alta (8-10 hrs)", img: "hawasforhim.jpg" },
+            { id: 7, nombre: "Nautica Classic", genero: "masculino", precio: "$ 110.000", notas: "Bergamota, limón, estragón, salvia y sándalo.", ocasion: "Uso Diario / Casual", fijacion: "Moderada (6-8 hrs)", img: "NAUTICACLASSIC.JPG" },
+            { id: 8, nombre: "Armaf Legasi Pour Femme", genero: "femenino", precio: "$ 140.000", notas: "Frutas rojas, jazmín, rosa, ámbar y almizcle.", ocasion: "Oficina / Reuniones Elegantes", fijacion: "Alta (8-10 hrs)", img: "LEGESIPOURFEMME.JPG" },
+            { id: 9, nombre: "Pepe Jeans For Her", genero: "femenino", precio: "$ 180.000", notas: "Almendra, leche de coco, marshmallow, vainilla y vodka.", ocasion: "Fiestas / Salidas Juveniles", fijacion: "Alta (8-10 hrs)", img: "PEPEJEANSFORHER.JPG" },
+            { id: 10, nombre: "Lattafa Noble Blush (Badee Al Oud)", genero: "femenino", precio: "$ 200.000", notas: "Leche de rosas, merengue, almendra, vainilla y sándalo.", ocasion: "Citas / Eventos de Día", fijacion: "Muy Alta (10-12 hrs)", img: "noblebush.jpg" },
+            { id: 11, nombre: "Armaf Odyssey Artisto (Red Edition)", genero: "masculino", precio: "$ 230.000", notas: "Cítricos luminosos, especias picantes, lavanda y madera.", ocasion: "Uso Diario Versátil / Noche", fijacion: "Alta (8-10 hrs)", img: "ARTISTO.JPG" },
+            { id: 12, nombre: "Afnan Lynked Freedom", genero: "unisex", precio: "$ 280.000", notas: "Notas verdes, cítricos, hierbas aromáticas y madera fina.", ocasion: "Casual / Oficina / Día", fijacion: "Alta (8-10 hrs)", img: "LYNKED.JPG" },
+            { id: 13, nombre: "Armaf Ventana Pour Homme", genero: "masculino", precio: "$ 190.000", notas: "Toronja, bergamota, lavanda, pachulí y cedro.", ocasion: "Trabajo / Citas Casuales", fijacion: "Alta (8-10 hrs)", img: "VENTANA.JPG" },
+            { id: 14, nombre: "Lattafa The Kingdom", genero: "femenino", precio: "$ 190.000", notas: "Flor de azahar, jazmín, vainilla cremosa y ámbar dulce.", ocasion: "Eventos Especiales / Noche", fijacion: "Muy Alta (10-12 hrs)", img: "THEKINGDOM.JPG" },
+            { id: 15, nombre: "Armaf Odyssey Eau De Montagne", genero: "unisex", precio: "$ 190.000", notas: "Notas acuáticas, té verde, bergamota, sándalo y almizcle.", ocasion: "Días Cálidos / Aire Libre", fijacion: "Moderada (6-8 hrs)", img: "MONTAGNE.JPG" },
+            { id: 16, nombre: "Lattafa Habik", genero: "unisex", precio: "$ 180.000", notas: "Ámbar oriental, resinas valiosas, flores oscuras y madera.", ocasion: "Gala / Citas Románticas", fijacion: "Extrema (12+ hrs)", img: "HABIK.JPG" },
+            { id: 17, nombre: "Armaf Odyssey Mandarin Sky Elixir", genero: "masculino", precio: "$ 250.000", notas: "Mandarina jugosa, caramelo, haba tonka, salvia y vetiver.", ocasion: "Salidas Nocturnas / Fiestas", fijacion: "Muy Alta (10-12 hrs)", img: "MANDARINSKYELIXIR.JPG" }
         ];
 
         let currentCategory = 'todos';
@@ -542,13 +549,13 @@
             const container = document.getElementById('perfume-container');
             container.innerHTML = '';
             
-            if (data.length === 0) {
+            if (!data || data.length === 0) {
                 container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--subtitulo-gris); padding: 20px;">No se encontraron perfumes con ese criterio.</p>`;
                 return;
             }
 
             data.forEach(p => {
-                const textMsg = encodeURIComponent(`¡Hola ASMperfumes! Quisiera consultar la disponibilidad de: ${p.nombre}`);
+                const textMsg = encodeURIComponent(`¡Hola ASMperfumes! Quisiera adquirir el perfume: ${p.nombre} (${p.precio})`);
                 const waUrl = `https://wa.me/${PHONE_NUMBER}?text=${textMsg}`;
                 const generoTag = p.genero === 'femenino' ? 'MUJER' : (p.genero === 'masculino' ? 'HOMBRE' : 'UNISEX');
                 
@@ -567,8 +574,9 @@
                             <div class="info-row"><span>Uso:</span> <strong>${p.ocasion}</strong></div>
                             <div class="info-row"><span>Fijación:</span> <strong>${p.fijacion}</strong></div>
                         </div>
+                        <div class="card-price">${p.precio}</div>
                         <div class="card-footer">
-                            <a href="${waUrl}" target="_blank" class="btn-whatsapp">Consultar por WhatsApp</a>
+                            <a href="${waUrl}" target="_blank" class="btn-whatsapp">Comprar por WhatsApp</a>
                         </div>
                     </div>`;
             });
