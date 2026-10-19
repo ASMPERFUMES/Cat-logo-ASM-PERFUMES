@@ -3,167 +3,524 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASMperfumes</title>
+    <title>ASMperfumes | Perfumes 100% Originales para Hombre y Mujer</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --fondo-crema: #F5EFEB;
-            --blanco-tarjeta: #FFFFFF;
-            --texto-principal: #2B231A;
-            --bronce-acento: #8C7355;
-            --bronce-oscuro: #6E583E;
-            --borde-suave: #E0D7CD;
-            --filtro-inactivo: #EAE3DA;
-            --subtitulo-gris: #887F75;
+            --blanco: #FFFFFF;
+            --negro-elegante: #111111;
+            --marfil: #F7F5F0;
+            --gris-claro: #EAEAEA;
+            --subtitulo-gris: #666666;
+            --borde-suave: #DDDDDD;
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body { 
             font-family: 'Montserrat', sans-serif; 
-            background-color: var(--fondo-crema); 
-            color: var(--texto-principal); 
+            background-color: var(--blanco); 
+            color: var(--negro-elegante); 
+            overflow-x: hidden;
         }
 
-        /* --- BANDEROLA DE ANUNCIOS Y SOPORTE --- */
-        .top-banner {
-            background-color: var(--bronce-oscuro);
-            color: #FFFFFF;
-            font-size: 0.72rem;
-            text-align: center;
-            padding: 8px 12px;
-            letter-spacing: 0.5px;
-            line-height: 1.4;
-        }
-
-        .top-banner strong {
-            color: #F5EFEB;
-        }
-
-        .top-banner span {
-            margin: 0 8px;
-            opacity: 0.5;
-        }
-
-        /* --- CABECERA CON BOTÓN DE MENÚ HAMBURGUESA --- */
+        /* --- BARRA SUPERIOR FIJA Y LIMPIA --- */
         header { 
-            background-color: var(--fondo-crema);
-            text-align: center; 
-            padding: 25px 20px 10px 20px; 
-            position: relative;
+            background-color: var(--blanco);
+            border-bottom: 1px solid var(--gris-claro);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         .menu-toggle-btn {
-            position: absolute;
-            left: 15px;
-            top: 25px;
             background: none;
             border: none;
-            font-size: 1.6rem;
-            color: var(--texto-principal);
+            font-size: 1.5rem;
             cursor: pointer;
-            padding: 5px;
+            color: var(--negro-elegante);
         }
 
-        header h1 { 
+        .logo-container {
+            text-decoration: none;
+            color: var(--negro-elegante);
+            text-align: left;
+        }
+
+        .logo-container h1 { 
             font-family: 'Playfair Display', serif; 
-            font-size: 2.3rem; 
+            font-size: 1.6rem; 
+            font-weight: 700;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .logo-container span { 
+            font-size: 0.65rem; 
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--subtitulo-gris);
+            display: block;
+            margin-top: 3px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cart-icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            font-size: 1.3rem;
+            color: var(--negro-elegante);
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: var(--negro-elegante);
+            color: var(--blanco);
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 50%;
             font-weight: 600;
-            color: var(--texto-principal);
-            letter-spacing: 1px;
-            margin-bottom: 8px;
         }
 
-        header .subtitle-bottom { 
-            font-size: 0.85rem; 
-            color: var(--subtitulo-gris); 
-            font-style: italic;
-        }
-
-        /* --- BARRA DE BÚSQUEDA --- */
-        .search-container {
-            max-width: 500px;
-            margin: 15px auto 5px auto;
-            padding: 0 15px;
-        }
-
-        .search-input {
+        /* --- CARRUSEL SUPERIOR HERO SECTION --- */
+        .hero-carousel {
+            position: relative;
             width: 100%;
-            padding: 10px 18px;
-            border-radius: 25px;
-            border: 1px solid var(--borde-suave);
-            background-color: var(--blanco-tarjeta);
+            height: 420px;
+            background-color: var(--marfil);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide img {
+            max-height: 220px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .carousel-slide h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 8px;
+            color: var(--negro-elegante);
+        }
+
+        .carousel-slide p {
+            font-size: 0.95rem;
+            color: var(--subtitulo-gris);
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        .promo-banner-slide {
+            background: var(--negro-elegante);
+            color: var(--blanco);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .promo-banner-slide h2 {
+            color: var(--blanco);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .promo-banner-slide p {
+            color: var(--gris-claro);
+            font-size: 1.1rem;
+        }
+
+        /* --- BUSCADOR Y FILTROS --- */
+        .filter-search-section {
+            padding: 25px 20px;
+            background-color: var(--blanco);
+            text-align: center;
+            border-bottom: 1px solid var(--gris-claro);
+        }
+
+        .search-bar {
+            max-width: 450px;
+            margin: 0 auto 15px auto;
+            display: flex;
+            border: 1px solid var(--negro-elegante);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border: none;
+            outline: none;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.85rem;
-            color: var(--texto-principal);
-            outline: none;
-            transition: border-color 0.2s ease;
         }
 
-        .search-input:focus {
-            border-color: var(--bronce-acento);
-        }
-
-        /* --- FILTROS HORIZONTALES --- */
-        .filters { 
-            display: flex; 
-            justify-content: center; 
-            gap: 10px; 
-            padding: 15px 10px; 
-            background-color: var(--fondo-crema); 
-            position: sticky; 
-            top: 0; 
-            z-index: 90; 
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
-        .filter-btn { 
-            background: var(--filtro-inactivo); 
-            border: 1px solid transparent; 
-            color: var(--bronce-oscuro); 
-            padding: 8px 20px; 
-            border-radius: 20px; 
-            font-size: 0.8rem; 
-            font-weight: 500; 
-            cursor: pointer; 
-            transition: all 0.2s ease;
-            font-family: 'Montserrat', sans-serif;
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--gris-claro);
+            color: var(--negro-elegante);
+            padding: 8px 18px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+            font-weight: 500;
         }
 
-        .filter-btn.active, .filter-btn:hover { 
-            background: var(--bronce-acento); 
-            color: #FFFFFF; 
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--negro-elegante);
+            color: var(--blanco);
+            border-color: var(--negro-elegante);
         }
 
-        /* --- MENÚ DESPLEGABLE LATERAL --- */
-        .side-menu-overlay {
+        /* --- CUADRÍCULA DE PRODUCTOS --- */
+        .container {
+            max-width: 1300px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--blanco);
+            border: 1px solid var(--gris-claro);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+        }
+
+        .card-img-container {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            background: var(--marfil);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .card-img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+
+        .card-img-container:hover .card-img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-category {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--subtitulo-gris);
+            margin-bottom: 6px;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--negro-elegante);
+            margin-bottom: 8px;
+        }
+
+        .card-price {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--negro-elegante);
+            margin-bottom: 15px;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-add-cart {
+            flex: 1;
+            background-color: var(--negro-elegante);
+            color: var(--blanco);
+            border: none;
+            padding: 10px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn-add-cart:hover {
+            background-color: #333333;
+        }
+
+        .btn-wa-item {
+            background-color: #25D366;
+            color: var(--blanco);
+            border: none;
+            padding: 10px 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s;
+        }
+
+        .btn-wa-item:hover {
+            opacity: 0.9;
+        }
+
+        /* --- PANEL LATERAL DEL CARRITO (SLIDE-OVER) --- */
+        .cart-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0,0,0,0.5);
             z-index: 998;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
         }
 
-        .side-menu-overlay.open {
+        .cart-overlay.open {
             opacity: 1;
             visibility: visible;
         }
 
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 400px;
+            max-width: 100%;
+            height: 100%;
+            background: var(--blanco);
+            z-index: 999;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+            transition: right 0.35s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-drawer.open {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--gris-claro);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .cart-body {
+            padding: 20px;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--gris-claro);
+            align-items: center;
+        }
+
+        .cart-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            background: var(--marfil);
+            padding: 5px;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .cart-item-price {
+            font-size: 0.85rem;
+            color: var(--subtitulo-gris);
+            margin-bottom: 8px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-controls button {
+            background: var(--gris-claro);
+            border: none;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #cc0000;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid var(--gris-claro);
+            background: var(--marfil);
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .checkout-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--borde-suave);
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+        }
+
+        .btn-whatsapp-checkout {
+            display: block;
+            width: 100%;
+            background-color: #25D366;
+            color: var(--blanco);
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+
+        /* --- MENÚ LATERAL DE NAVEGACIÓN --- */
         .side-menu {
             position: fixed;
             top: 0;
-            left: -280px;
-            width: 280px;
+            left: -300px;
+            width: 300px;
             height: 100%;
-            background-color: var(--blanco-tarjeta);
+            background: var(--blanco);
             z-index: 999;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-            transition: left 0.3s ease;
+            box-shadow: 5px 0 25px rgba(0,0,0,0.1);
+            transition: left 0.35s ease;
             display: flex;
             flex-direction: column;
         }
@@ -172,504 +529,400 @@
             left: 0;
         }
 
-        .menu-header {
-            padding: 18px 20px;
-            border-bottom: 1px solid var(--borde-suave);
+        .side-menu-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--gris-claro);
             display: flex;
-            align-items: center;
             justify-content: space-between;
-        }
-
-        .close-menu-btn {
-            background: none;
-            border: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--texto-principal);
-            cursor: pointer;
-            display: flex;
             align-items: center;
-            gap: 6px;
-            font-family: 'Montserrat', sans-serif;
         }
 
-        .menu-list {
+        .side-menu-list {
             list-style: none;
-            padding: 10px 0;
+            padding: 20px;
         }
 
-        .menu-list li {
-            border-bottom: 1px solid var(--borde-suave);
+        .side-menu-list li {
+            margin-bottom: 15px;
         }
 
-        .menu-list a {
+        .side-menu-list a {
+            text-decoration: none;
+            color: var(--negro-elegante);
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             display: block;
-            padding: 16px 20px;
-            text-decoration: none;
-            color: var(--texto-principal);
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: background 0.2s ease;
+            transition: color 0.2s;
         }
 
-        .menu-list a:hover {
-            background-color: var(--fondo-crema);
-            color: var(--bronce-acento);
-        }
-
-        /* --- TARJETAS --- */
-        .container { 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 10px 15px 30px 15px; 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-            gap: 20px; 
-        }
-
-        .card { 
-            background: var(--blanco-tarjeta); 
-            border-radius: 10px; 
-            overflow: hidden; 
-            border: 1px solid var(--borde-suave); 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03); 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            transition: transform 0.2s ease;
-        }
-
-        .card-img { 
-            width: 100%; 
-            height: 270px; 
-            object-fit: contain; 
-            background: #FFFFFF; 
-            padding: 20px; 
-        }
-
-        .card-header { 
-            padding: 10px 15px 5px 15px; 
-            text-align: center;
-        }
-
-        .badge { 
-            display: inline-block;
-            font-size: 0.68rem; 
-            font-weight: 600; 
-            text-transform: uppercase; 
-            letter-spacing: 1.5px;
+        .side-menu-list a:hover {
             color: var(--subtitulo-gris);
-            margin-bottom: 6px;
-        }
-
-        .card-title { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 1.15rem; 
-            color: var(--texto-principal); 
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        .card-body { 
-            padding: 10px 15px 10px 15px; 
-            font-size: 0.8rem; 
-            flex-grow: 1; 
-        }
-
-        .notes-block { 
-            margin-bottom: 10px; 
-            background: var(--fondo-crema);
-            padding: 10px;
-            border-radius: 6px;
-        }
-
-        .notes-label { 
-            font-weight: 600; 
-            color: var(--bronce-oscuro); 
-            display: block; 
-            margin-bottom: 3px; 
-            font-size: 0.72rem;
-            text-transform: uppercase;
-        }
-
-        .notes-block p {
-            color: var(--texto-principal);
-            line-height: 1.35;
-            font-size: 0.78rem;
-        }
-
-        .info-row { 
-            display: flex; 
-            justify-content: space-between; 
-            margin-top: 6px; 
-            padding-top: 6px; 
-            border-top: 1px dashed var(--borde-suave); 
-            font-size: 0.75rem; 
-            color: var(--subtitulo-gris);
-        }
-
-        .info-row strong {
-            color: var(--texto-principal);
-        }
-
-        /* ESTILO DEL PRECIO */
-        .card-price {
-            text-align: center;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--bronce-oscuro);
-            padding: 6px 15px 0 15px;
-            letter-spacing: 0.5px;
-        }
-
-        .card-footer { 
-            padding: 10px 15px 15px 15px; 
-            background-color: var(--blanco-tarjeta); 
-        }
-
-        .btn-whatsapp { 
-            display: block; 
-            width: 100%; 
-            padding: 11px; 
-            background-color: var(--bronce-acento); 
-            color: #FFFFFF; 
-            text-align: center; 
-            text-decoration: none; 
-            font-weight: 500; 
-            font-size: 0.8rem; 
-            border-radius: 6px; 
-            letter-spacing: 1px;
-            transition: background 0.2s ease;
-        }
-
-        .btn-whatsapp:hover {
-            background-color: var(--bronce-oscuro);
-        }
-
-        /* --- ESTILOS PROFESIONALES Y ELEGANTES PARA AGOTADO --- */
-        .badge-agotado {
-            display: inline-block;
-            background-color: var(--bronce-oscuro);
-            color: #FFFFFF;
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 3px 10px;
-            border-radius: 4px;
-            margin-bottom: 6px;
-        }
-
-        .card-title.tachado {
-            text-decoration: line-through;
-            opacity: 0.55;
-        }
-
-        .card.agotado-card {
-            opacity: 0.9;
-        }
-
-        .btn-whatsapp.agotado-btn {
-            background-color: var(--filtro-inactivo);
-            color: var(--subtitulo-gris);
-            cursor: default;
-            pointer-events: none;
-        }
-
-        /* --- BOTÓN FLOTANTE PERMANENTE DE WHATSAPP --- */
-        .float-whatsapp {
-            position: fixed;
-            width: 58px;
-            height: 58px;
-            bottom: 22px;
-            right: 22px;
-            background-color: #25D366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 32px;
-            box-shadow: 2px 4px 12px rgba(0,0,0,0.25);
-            z-index: 95;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: transform 0.2s ease;
-        }
-
-        .float-whatsapp:hover {
-            transform: scale(1.08);
         }
 
         /* --- PIE DE PÁGINA --- */
         footer {
-            background-color: var(--blanco-tarjeta);
-            border-top: 1px solid var(--borde-suave);
-            padding: 35px 20px;
+            background-color: var(--marfil);
+            padding: 50px 20px;
             text-align: center;
-            margin-top: 40px;
+            border-top: 1px solid var(--gris-claro);
+            margin-top: 60px;
         }
 
         footer h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--texto-principal);
-            margin-bottom: 6px;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
         }
 
         footer p {
-            font-size: 0.82rem;
             color: var(--subtitulo-gris);
-            margin-bottom: 22px;
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .social-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            border-radius: 25px;
+            background: var(--negro-elegante);
+            color: var(--blanco);
+            padding: 10px 20px;
+            border-radius: 30px;
             text-decoration: none;
             font-size: 0.8rem;
             font-weight: 600;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-        }
-
-        .social-btn svg {
-            width: 18px;
-            height: 18px;
-            fill: #FFFFFF;
-        }
-
-        .btn-instagram {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: #FFFFFF;
-        }
-
-        .btn-tiktok {
-            background-color: #000000;
-            color: #FFFFFF;
-            border: 1px solid #222;
-        }
-
-        .btn-email {
-            background-color: #EA4335;
-            color: #FFFFFF;
+            letter-spacing: 1px;
+            transition: opacity 0.2s;
         }
 
         .social-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
-    <!-- BANNER DE GARANTÍA Y SOPORTE -->
-    <div class="top-banner">
-        📞 Soporte 24/7: <strong>+57 301 873 8631</strong> 
-        <span>|</span> 🚚 Envío gratis a toda Colombia por compras mayores a $250.000 (no aplica para promociones)
-        <span>|</span> ✨ Perfumes 100% Originales <span>|</span> 🛡️ Compras Seguras
-    </div>
 
     <!-- CABECERA -->
     <header>
-        <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
-        <h1>ASMperfumes</h1>
-        <div class="subtitle-bottom">El arte de cautivar sin palabras</div>
-        
-        <!-- BUSCADOR -->
-        <div class="search-container">
-            <input type="text" id="search-input" class="search-input" placeholder="Buscar por nombre o nota olfativa (ej. Vainilla, Khamrah)..." oninput="handleSearch()">
+        <div class="header-left">
+            <button class="menu-toggle-btn" onclick="toggleNavMenu()">☰</button>
+            <a href="#" class="logo-container">
+                <h1>ASM</h1>
+                <span>perfumes</span>
+            </a>
+        </div>
+        <div class="header-right">
+            <button class="cart-icon-btn" onclick="toggleCart()">
+                🛒
+                <span class="cart-badge" id="cart-counter">0</span>
+            </button>
         </div>
     </header>
 
-    <!-- MENÚ LATERAL DESPLEGABLE -->
-    <div class="side-menu-overlay" id="menu-overlay" onclick="toggleMenu()"></div>
+    <!-- MENÚ LATERAL DE NAVEGACIÓN -->
+    <div class="cart-overlay" id="nav-overlay" onclick="toggleNavMenu()"></div>
     <div class="side-menu" id="side-menu">
-        <div class="menu-header">
-            <button class="close-menu-btn" onclick="toggleMenu()">✖ Cerrar Menú</button>
+        <div class="side-menu-header">
+            <h3>Menú Principal</h3>
+            <button class="close-cart" onclick="toggleNavMenu()">✕</button>
         </div>
-        <ul class="menu-list">
-            <li><a href="#" onclick="selectCategoryFromMenu('todos')">VER TODO</a></li>
-            <li><a href="#" onclick="selectCategoryFromMenu('masculino')">HOMBRE</a></li>
-            <li><a href="#" onclick="selectCategoryFromMenu('femenino')">MUJER</a></li>
-            <li><a href="#" onclick="selectCategoryFromMenu('unisex')">UNISEX</a></li>
+        <ul class="side-menu-list">
+            <li><a href="#" onclick="filterPerfumes('todos'); toggleNavMenu();">Inicio / Catálogo Completo</a></li>
+            <li><a href="#" onclick="filterPerfumes('masculino'); toggleNavMenu();">Perfumes para Hombre</a></li>
+            <li><a href="#" onclick="filterPerfumes('femenino'); toggleNavMenu();">Perfumes para Mujer</a></li>
+            <li><a href="#" onclick="filterPerfumes('unisex'); toggleNavMenu();">Perfumes Unisex</a></li>
         </ul>
     </div>
 
-    <!-- FILTROS SUPERIORES -->
-    <div class="filters">
-        <button class="filter-btn active" data-cat="todos" onclick="filterPerfumes('todos')">Todos</button>
-        <button class="filter-btn" data-cat="femenino" onclick="filterPerfumes('femenino')">Mujer</button>
-        <button class="filter-btn" data-cat="masculino" onclick="filterPerfumes('masculino')">Hombre</button>
-        <button class="filter-btn" data-cat="unisex" onclick="filterPerfumes('unisex')">Unisex</button>
+    <!-- CARRUSEL SUPERIOR HERO SECTION -->
+    <div class="hero-carousel" id="hero-carousel">
+        <!-- Slide 1: Promoción Envío Gratis -->
+        <div class="carousel-slide active promo-banner-slide">
+            <h2>Envío Nacional Gratis</h2>
+            <p>Disfruta de envío totalmente gratis en todo el país por compras superiores a $250.000 COP.</p>
+        </div>
+        <!-- Slide 2: Logo y Presentación -->
+        <div class="carousel-slide">
+            <h2>ASMperfumes</h2>
+            <p>El arte de encontrar tu esencia con fragancias 100% originales para hombre, mujer y unisex.</p>
+        </div>
+        <!-- Slide 3: Lujo Editorial -->
+        <div class="carousel-slide">
+            <img src="KHAMRAH.JPG" alt="Perfume Lujo">
+            <h2>Elegancia y Exclusividad</h2>
+            <p>Descubre acordes inolvidables que definen tu personalidad y estilo único.</p>
+        </div>
     </div>
 
+    <!-- BUSCADOR Y FILTROS -->
+    <section class="filter-search-section">
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Buscar perfume por nombre..." oninput="handleSearch()">
+        </div>
+        <div class="filters">
+            <button class="filter-btn active" data-cat="todos" onclick="filterPerfumes('todos')">Todos</button>
+            <button class="filter-btn" data-cat="masculino" onclick="filterPerfumes('masculino')">Hombre</button>
+            <button class="filter-btn" data-cat="femenino" onclick="filterPerfumes('femenino')">Mujer</button>
+            <button class="filter-btn" data-cat="unisex" onclick="filterPerfumes('unisex')">Unisex</button>
+        </div>
+    </section>
+
+    <!-- CUADRÍCULA DE PRODUCTOS -->
     <div class="container" id="perfume-container"></div>
 
-    <!-- BOTÓN FLOTANTE PERMANENTE DE WHATSAPP -->
-    <a href="https://wa.me/573018738631?text=%C2%A1Hola%20ASMperfumes!%20Quisiera%20hacer%20una%20consulta." class="float-whatsapp" target="_blank" aria-label="Contacto WhatsApp">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-        </svg>
-    </a>
+    <!-- PANEL LATERAL DEL CARRITO (SLIDE-OVER) -->
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-cart" onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-body" id="cart-items-container">
+            <!-- Se llena dinámicamente -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Total:</span>
+                <span id="cart-total-price">$ 0 COP</span>
+            </div>
+            <div class="checkout-form">
+                <input type="text" id="client-name" placeholder="Tu Nombre y Apellido">
+                <input type="text" id="client-city" placeholder="Tu Ciudad">
+            </div>
+            <button class="btn-whatsapp-checkout" onclick="checkoutWhatsApp()">Finalizar pedido por WhatsApp</button>
+        </div>
+    </div>
 
     <!-- PIE DE PÁGINA -->
     <footer>
         <h3>ASMperfumes</h3>
-        <p>Síguenos en nuestras redes sociales o contáctanos</p>
+        <p>Perfumes 100% originales para hombre, mujer y unisex. Encuentra el aroma que expresa tu esencia.</p>
         <div class="social-links">
-            <!-- INSTAGRAM -->
-            <a href="https://www.instagram.com/asmperfumes_?stkn=Nm05N2V1MnBrMjEx" target="_blank" class="social-btn btn-instagram">
-                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                <span>@asmperfumes_</span>
-            </a>
-
-            <!-- TIKTOK -->
-            <a href="https://www.tiktok.com/@asm.perfumes?_r=1&_t=ZS-9AI3m0jL4xo" target="_blank" class="social-btn btn-tiktok">
-                <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.57-1.31 1.56-1.3 2.56.02.82.42 1.61 1.09 2.08.79.57 1.84.72 2.77.42.92-.3 1.68-1.02 1.98-1.94.13-.45.18-.92.18-1.39V.02z"/></svg>
-                <span>@asm.perfumes</span>
-            </a>
-
-            <!-- CORREO -->
-            <a href="mailto:asmperfumes0@gmail.com" class="social-btn btn-email">
-                <svg viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
-                <span>asmperfumes0@gmail.com</span>
-            </a>
+            <a href="https://www.instagram.com/asmperfumes_/" target="_blank" class="social-btn">Instagram</a>
+            <a href="https://www.tiktok.com/@asmperfumes_" target="_blank" class="social-btn">TikTok</a>
         </div>
     </footer>
 
     <script>
-        const PHONE_NUMBER = "573018738631"; 
-        
-        // BASE DE DATOS DE PERFUMES CON PRECIOS Y MANTENIENDO LAS IMÁGENES EXACTAS
+        const PHONE_NUMBER = "573018738631";
+
+        // CATÁLOGO OFICIAL DE LOS 17 PERFUMES CON PRECIOS Y ESTADOS EXACTOS
         const perfumes = [
-            { id: 1, nombre: "Fakhar Lattafa Gold Extrait", genero: "unisex", precio: "$ 190.000", notas: "Nardos, notas solares, cáshmeran, haba tonka y ámbar.", ocasion: "Eventos Elegantes / Noche", fijacion: "Extrema (12+ hrs)", img: "fakhar.jpg", agotado: false },
-            { id: 2, nombre: "Lattafa Khamrah", genero: "unisex", precio: "$ 180.000", notas: "Canela, nuez moscada, praliné, fechas, vainilla y tonka.", ocasion: "Citas / Noches Frescas", fijacion: "Muy Alta (10-12 hrs)", img: "KHAMRAH.JPG", agotado: false },
-            { id: 3, nombre: "Lattafa Khamrah Dukhan", genero: "unisex", precio: "$ 220.000", notas: "Ámbar denso, notas ahumadas, especias cálidas y maderas.", ocasion: "Eventos Nocturnos Exclusivos", fijacion: "Extrema (12+ hrs)", img: "khamrahdukham.jpg", agotado: false },
-            { id: 4, nombre: "Maison Alhambra Philos Rosso", genero: "femenino", precio: "$ 190.000", notas: "Rosa, davana, pachulí, clavo, pino y ámbar gris.", ocasion: "Citas / Ocasiones Especiales", fijacion: "Alta (8-10 hrs)", img: "PHILOS.JPG", agotado: false },
-            { id: 5, nombre: "Afnan 9 PM Elixir", genero: "masculino", precio: "$ 250.000", notas: "Especias finas, maderas profundas, cuero y ámbar.", ocasion: "Fiestas / Salidas Nocturnas", fijacion: "Extrema (12+ hrs)", img: "9PMELIXIR.JPG", agotado: true },
-            { id: 6, nombre: "Rasasi Hawas for Him", genero: "masculino", precio: "$ 230.000", notas: "Manzana, bergamota, canela, notas marinas y ámbar gris.", ocasion: "Uso Diario / Climas Cálidos", fijacion: "Alta (8-10 hrs)", img: "hawasforhim.jpg", agotado: false },
-            { id: 7, nombre: "Nautica Classic", genero: "masculino", precio: "$ 110.000", notas: "Bergamota, limón, estragón, salvia y sándalo.", ocasion: "Uso Diario / Casual", fijacion: "Moderada (6-8 hrs)", img: "NAUTICACLASSIC.JPG", agotado: false },
-            { id: 8, nombre: "Armaf Legasi Pour Femme", genero: "femenino", precio: "$ 140.000", notas: "Frutas rojas, jazmín, rosa, ámbar y almizcle.", ocasion: "Oficina / Reuniones Elegantes", fijacion: "Alta (8-10 hrs)", img: "LEGESIPOURFEMME.JPG", agotado: false },
-            { id: 9, nombre: "Pepe Jeans For Her", genero: "femenino", precio: "$ 180.000", notas: "Almendra, leche de coco, marshmallow, vainilla y vodka.", ocasion: "Fiestas / Salidas Juveniles", fijacion: "Alta (8-10 hrs)", img: "PEPEJEANSFORHER.JPG", agotado: false },
-            { id: 10, nombre: "Lattafa Noble Blush (Badee Al Oud)", genero: "femenino", precio: "$ 200.000", notas: "Leche de rosas, merengue, almendra, vainilla y sándalo.", ocasion: "Citas / Eventos de Día", fijacion: "Muy Alta (10-12 hrs)", img: "noblebush.jpg", agotado: false },
-            { id: 11, nombre: "Armaf Odyssey Artisto (Red Edition)", genero: "masculino", precio: "$ 230.000", notas: "Cítricos luminosos, especias picantes, lavanda y madera.", ocasion: "Uso Diario Versátil / Noche", fijacion: "Alta (8-10 hrs)", img: "ARTISTO.JPG", agotado: false },
-            { id: 12, nombre: "Afnan Lynked Freedom", genero: "masculino", precio: "$ 280.000", notas: "Notas verdes, cítricos, hierbas aromáticas y madera fina.", ocasion: "Casual / Oficina / Día", fijacion: "Alta (8-10 hrs)", img: "LYNKED.JPG", agotado: true },
-            { id: 13, nombre: "Armaf Ventana Pour Homme", genero: "masculino", precio: "$ 190.000", notas: "Toronja, bergamota, lavanda, pachulí y cedro.", ocasion: "Trabajo / Citas Casuales", fijacion: "Alta (8-10 hrs)", img: "VENTANA.JPG", agotado: false },
-            { id: 14, nombre: "Lattafa The Kingdom", genero: "femenino", precio: "$ 190.000", notas: "Flor de azahar, jazmín, vainilla cremosa y ámbar dulce.", ocasion: "Eventos Especiales / Noche", fijacion: "Muy Alta (10-12 hrs)", img: "THEKINGDOM.JPG", agotado: false },
-            { id: 15, nombre: "Armaf Odyssey Eau De Montagne", genero: "unisex", precio: "$ 190.000", notas: "Notas acuáticas, té verde, bergamota, sándalo y almizcle.", ocasion: "Días Cálidos / Aire Libre", fijacion: "Moderada (6-8 hrs)", img: "MONTAGNE.JPG", agotado: false },
-            { id: 16, nombre: "Lattafa Habik", genero: "masculino", precio: "$ 190.000", notas: "Ámbar oriental, resinas valiosas, flores oscuras y madera.", ocasion: "Gala / Citas Románticas", fijacion: "Extrema (12+ hrs)", img: "HABIK.JPG", agotado: false },
-            { id: 17, nombre: "Armaf Odyssey Mandarin Sky Elixir", genero: "masculino", precio: "$ 250.000", notas: "Mandarina jugosa, caramelo, haba tonka, salvia y vetiver.", ocasion: "Salidas Nocturnas / Fiestas", fijacion: "Muy Alta (10-12 hrs)", img: "MANDARINSKYELIXIR.JPG", agotado: false }
+            // Hombre (8)
+            { id: 1, nombre: "ARMAF Ventana Pour Homme", genero: "masculino", presentacion: "3.4 oz", concentracion: "Eau de Parfum (EDP)", precioNum: 190000, precioStr: "$ 190.000 COP", img: "VENTANA.JPG", agotado: false },
+            { id: 2, nombre: "Odyssey Eau De Montagne", genero: "masculino", presentacion: "3.4 oz", concentracion: "Eau de Parfum (EDP)", precioNum: 190000, precioStr: "$ 190.000 COP", img: "MONTAGNE.JPG", agotado: false },
+            { id: 3, nombre: "Habik", genero: "masculino", presentacion: "3.4 oz", concentracion: "Eau de Parfum (EDP)", precioNum: 180000, precioStr: "$ 180.000 COP", img: "HABIK.JPG", agotado: false },
+            { id: 4, nombre: "Lynked Freedom", genero: "masculino", presentacion: "3.4 oz", concentracion: "", precioNum: 280000, precioStr: "$ 280.000 COP", img: "LYNKED.JPG", agotado: false },
+            { id: 5, nombre: "9 PM", genero: "masculino", presentacion: "3.4 oz", concentracion: "Eau de Parfum (EDP)", precioNum: 250000, precioStr: "$ 250.000 COP", img: "9PMELIXIR.JPG", agotado: false },
+            { id: 6, nombre: "Odyssey Artisto Red Edition", genero: "masculino", presentacion: "3.4 oz", concentracion: "Eau de Parfum (EDP)", precioNum: 230000, precioStr: "$ 230.000 COP", img: "ARTISTO.JPG", agotado: false },
+            { id: 7, nombre: "Hawas", genero: "masculino", presentacion: "3.4 oz", concentracion: "Eau de Parfum (EDP)", precioNum: 230000, precioStr: "$ 230.000 COP", img: "hawasforhim.jpg", agotado: false },
+            { id: 8, nombre: "Nautica", genero: "masculino", presentacion: "3.3 oz", concentracion: "Eau de Toilette (EDT)", precioNum: 110000, precioStr: "$ 110.000 COP", img: "NAUTICACLASSIC.JPG", agotado: false },
+            
+            // Mujer (5)
+            { id: 9, nombre: "Philos Rosso", genero: "femenino", presentacion: "3.4 oz", concentracion: "Eau de Parfum (EDP)", precioNum: 190000, precioStr: "$ 190.000 COP", img: "PHILOS.JPG", agotado: false },
+            { id: 10, nombre: "Pepe Jeans for Her", genero: "femenino", presentacion: "2.7 oz", concentracion: "", precioNum: 180000, precioStr: "$ 180.000 COP", img: "PEPEJEANSFORHER.JPG", agotado: false },
+            { id: 11, nombre: "Bade'e Al Oud Noble Blush", genero: "femenino", presentacion: "3.4 oz", concentracion: "Eau de Parfum (EDP)", precioNum: 200000, precioStr: "$ 200.000 COP", img: "noblebush.jpg", agotado: false },
+            { id: 12, nombre: "ARMAF Legesi", genero: "femenino", presentacion: "3.4 oz", concentracion: "Eau de Parfum (EDP)", precioNum: 140000, precioStr: "$ 140.000 COP", img: "LEGESIPOURFEMME.JPG", agotado: false },
+            { id: 13, nombre: "The Kingdom", genero: "femenino", presentacion: "3.4 oz", concentracion: "Eau de Parfum (EDP)", precioNum: 190000, precioStr: "$ 190.000 COP", img: "THEKINGDOM.JPG", agotado: false },
+            
+            // Unisex (4)
+            { id: 14, nombre: "Fakhar Gold", genero: "unisex", presentacion: "3.4 oz", concentracion: "Eau de Parfum (EDP)", precioNum: 190000, precioStr: "$ 190.000 COP", img: "fakhar.jpg", agotado: false },
+            { id: 15, nombre: "Khamrah", genero: "unisex", presentacion: "3.4 oz", concentracion: "Eau de Parfum (EDP)", precioNum: 180000, precioStr: "$ 180.000 COP", img: "KHAMRAH.JPG", agotado: false },
+            { id: 16, nombre: "Khamrah Dukhan", genero: "unisex", presentacion: "3.4 oz", concentracion: "", precioNum: 220000, precioStr: "$ 220.000 COP", img: "khamrahdukham.jpg", agotado: false },
+            { id: 17, nombre: "Odyssey Mandarin Sky Elixir", genero: "unisex", presentacion: "3.4 oz", concentracion: "", precioNum: 250000, precioStr: "$ 250.000 COP", img: "MANDARINSKYELIXIR.JPG", agotado: false }
         ];
 
+        let cart = [];
         let currentCategory = 'todos';
 
+        // LÓGICA DEL CARRUSEL SUPERIOR
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 4500);
+
+        // RENDERIZADO DE PERFUMES EN CUADRÍCULA
         function renderPerfumes(data) {
             const container = document.getElementById('perfume-container');
             container.innerHTML = '';
-            
-            if (!data || data.length === 0) {
-                container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--subtitulo-gris); padding: 20px;">No se encontraron perfumes con ese criterio.</p>`;
+
+            if (data.length === 0) {
+                container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--subtitulo-gris); padding: 40px;">No se encontraron perfumes disponibles.</p>`;
                 return;
             }
 
             data.forEach(p => {
-                const generoTag = p.genero === 'femenino' ? 'MUJER' : (p.genero === 'masculino' ? 'HOMBRE' : 'UNISEX');
-                
-                let headerContent = '';
-                let btnHtml = '';
-                let cardClass = 'card';
+                const generoLabel = p.genero === 'masculino' ? 'Hombre' : (p.genero === 'femenino' ? 'Mujer' : 'Unisex');
+                const textWa = encodeURIComponent(`Hola, ASMperfumes. Estoy interesado/a en el perfume ${p.nombre} de ${p.presentacion}, con un precio de ${p.precioStr}. ¿Me pueden confirmar su disponibilidad y cómo puedo realizar la compra?`);
+                const urlWa = `https://wa.me/${PHONE_NUMBER}?text=${textWa}`;
 
-                if (p.agotado) {
-                    cardClass += ' agotado-card';
-                    headerContent = `
-                        <span class="badge-agotado">AGOTADO</span><br>
-                        <span class="badge">${generoTag}</span>
-                        <h2 class="card-title tachado">${p.nombre}</h2>
-                    `;
-                    btnHtml = `<span class="btn-whatsapp agotado-btn">No disponible</span>`;
-                } else {
-                    const textMsg = encodeURIComponent(`¡Hola ASMperfumes! Quisiera adquirir el perfume: ${p.nombre} (${p.precio})`);
-                    const waUrl = `https://wa.me/${PHONE_NUMBER}?text=${textMsg}`;
-                    headerContent = `
-                        <span class="badge">${generoTag}</span>
-                        <h2 class="card-title">${p.nombre}</h2>
-                    `;
-                    btnHtml = `<a href="${waUrl}" target="_blank" class="btn-whatsapp">Comprar por WhatsApp</a>`;
-                }
-                
                 container.innerHTML += `
-                    <div class="${cardClass}">
-                        <img src="${p.img}" alt="${p.nombre}" class="card-img">
-                        <div class="card-header">
-                            ${headerContent}
+                    <div class="card">
+                        <div class="card-img-container">
+                            <img src="${p.img}" alt="${p.nombre}" class="card-img">
                         </div>
-                        <div class="card-body">
-                            <div class="notes-block">
-                                <span class="notes-label">Notas Olfativas</span>
-                                <p>${p.notas}</p>
+                        <div class="card-content">
+                            <div>
+                                <span class="card-category">${generoLabel} • ${p.presentacion}</span>
+                                <h3 class="card-title">${p.nombre}</h3>
+                                <div class="card-price">${p.precioStr}</div>
                             </div>
-                            <div class="info-row"><span>Uso:</span> <strong>${p.ocasion}</strong></div>
-                            <div class="info-row"><span>Fijación:</span> <strong>${p.fijacion}</strong></div>
+                            <div class="card-actions">
+                                <button class="btn-add-cart" onclick="addToCart(${p.id})">Agregar</button>
+                                <a href="${urlWa}" target="_blank" class="btn-wa-item" title="Consultar por WhatsApp">
+                                    <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                </a>
+                            </div>
                         </div>
-                        <div class="card-price">${p.precio}</div>
-                        <div class="card-footer">
-                            ${btnHtml}
-                        </div>
-                    </div>`;
+                    </div>
+                `;
             });
         }
 
-        function filterPerfumes(category) {
-            currentCategory = category;
-            
+        // FILTROS Y BÚSQUEDA
+        function filterPerfumes(cat) {
+            currentCategory = cat;
             document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-cat') === category);
+                btn.classList.toggle('active', btn.getAttribute('data-cat') === cat);
             });
-
             handleSearch();
         }
 
         function handleSearch() {
             const query = document.getElementById('search-input').value.toLowerCase().trim();
-            
             let filtered = perfumes;
             if (currentCategory !== 'todos') {
                 filtered = filtered.filter(p => p.genero === currentCategory);
             }
-
             if (query !== '') {
-                filtered = filtered.filter(p => 
-                    p.nombre.toLowerCase().includes(query) || 
-                    p.notas.toLowerCase().includes(query)
-                );
+                filtered = filtered.filter(p => p.nombre.toLowerCase().includes(query));
             }
-
             renderPerfumes(filtered);
         }
 
-        /* LÓGICA DEL MENÚ HAMBURGUESA LATERAL */
-        function toggleMenu() {
+        // GESTIÓN DEL CARRITO LATERAL
+        function toggleCart() {
+            document.getElementById('cart-drawer').classList.toggle('open');
+            document.getElementById('cart-overlay').classList.toggle('open');
+        }
+
+        function toggleNavMenu() {
             document.getElementById('side-menu').classList.toggle('open');
-            document.getElementById('menu-overlay').classList.toggle('open');
+            document.getElementById('nav-overlay').classList.toggle('open');
         }
 
-        function selectCategoryFromMenu(category) {
-            toggleMenu();
-            filterPerfumes(category);
+        function addToCart(id) {
+            const product = perfumes.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            updateCartUI();
+            toggleCart();
         }
 
+        function changeQuantity(id, change) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.id !== id);
+                }
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(i => i.id !== id);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const counter = document.getElementById('cart-counter');
+            const totalPriceEl = document.getElementById('cart-total-price');
+            
+            container.innerHTML = '';
+            let totalUnits = 0;
+            let totalPrice = 0;
+
+            if (cart.length === 0) {
+                container.innerHTML = `<p style="text-align: center; color: var(--subtitulo-gris); margin-top: 40px;">Tu carrito está vacío.</p>`;
+                counter.textContent = '0';
+                totalPriceEl.textContent = '$ 0 COP';
+                return;
+            }
+
+            cart.forEach(item => {
+                totalUnits += item.quantity;
+                totalPrice += item.precioNum * item.quantity;
+
+                container.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.img}" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.nombre}</div>
+                            <div class="cart-item-price">${item.precioStr} c/u</div>
+                            <div class="quantity-controls">
+                                <button onclick="changeQuantity(${item.id}, -1)">-</button>
+                                <span>${item.quantity}</span>
+                                <button onclick="changeQuantity(${item.id}, 1)">+</button>
+                            </div>
+                            <button class="remove-item" onclick="removeFromCart(${item.id})">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            counter.textContent = totalUnits;
+            totalPriceEl.textContent = `$ ${totalPrice.toLocaleString('es-CO')} COP`;
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert("Tu carrito está vacío.");
+                return;
+            }
+            const name = document.getElementById('client-name').value.trim();
+            const city = document.getElementById('client-city').value.trim();
+
+            if (!name || !city) {
+                alert("Por favor, introduce tu nombre y tu ciudad para continuar.");
+                return;
+            }
+
+            let message = `Hola, ASMperfumes. Quiero realizar el siguiente pedido:\n\n`;
+            let totalUnits = 0;
+            let totalPrice = 0;
+
+            cart.forEach(item => {
+                const subtotal = item.precioNum * item.quantity;
+                totalUnits += item.quantity;
+                totalPrice += subtotal;
+                message += `• Producto: ${item.nombre}\n- Cantidad: ${item.quantity}\n- Precio unitario: ${item.precioStr}\n- Subtotal: $ ${subtotal.toLocaleString('es-CO')} COP\n\n`;
+            });
+
+            message += `Total de productos: ${totalUnits}\nTotal de la compra: $ ${totalPrice.toLocaleString('es-CO')} COP\n\nMi nombre es: ${name}\nMi ciudad es: ${city}\n\nPor favor, confirmen la disponibilidad y el costo del envío. Gracias`;
+
+            const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        // Inicializar catálogo al cargar
         renderPerfumes(perfumes);
     </script>
 </body>
