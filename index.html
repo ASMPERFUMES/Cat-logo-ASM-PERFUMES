@@ -28,27 +28,13 @@
         header {
             background-color: var(--blanco);
             border-bottom: 1px solid var(--gris-claro);
-            padding: 20px 30px;
+            padding: 20px 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             position: sticky;
             top: 0;
             z-index: 100;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .menu-toggle-btn {
-            background: none;
-            border: none;
-            font-size: 1.4rem;
-            cursor: pointer;
-            color: var(--negro);
         }
 
         .logo-container {
@@ -59,43 +45,55 @@
 
         .logo-container h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: 2px;
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: 3px;
             line-height: 1;
         }
 
         .logo-container span {
-            font-size: 0.6rem;
-            letter-spacing: 3px;
+            font-size: 0.55rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
             color: var(--subtitulo-gris);
             display: block;
-            margin-top: 4px;
+            margin-top: 5px;
         }
 
         .header-right {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 22px;
         }
 
-        .search-icon-btn, .cart-icon-btn {
+        .icon-btn {
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 1.2rem;
             color: var(--negro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
+        }
+
+        .icon-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .cart-badge {
             position: absolute;
-            top: -8px;
-            right: -10px;
+            top: -6px;
+            right: -8px;
             background-color: var(--negro);
             color: var(--blanco);
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             padding: 2px 5px;
             border-radius: 50%;
             font-weight: 600;
@@ -114,7 +112,7 @@
 
         .side-menu {
             position: fixed;
-            top: 0; left: -320px; width: 320px; height: 100%;
+            top: 0; left: -350px; width: 350px; max-width: 90%; height: 100%;
             background: var(--blanco);
             z-index: 999;
             box-shadow: 5px 0 25px rgba(0,0,0,0.1);
@@ -136,21 +134,21 @@
         .side-menu-list li { margin-bottom: 15px; }
         .side-menu-list a {
             text-decoration: none; color: var(--negro);
-            font-size: 0.95rem; font-weight: 500;
+            font-size: 0.9rem; font-weight: 500;
             letter-spacing: 1px; text-transform: uppercase;
             display: block; transition: color 0.2s;
         }
         .side-menu-list a:hover { color: var(--subtitulo-gris); }
 
         .side-menu-section-title {
-            font-size: 0.75rem; text-transform: uppercase;
+            font-size: 0.7rem; text-transform: uppercase;
             letter-spacing: 2px; color: var(--subtitulo-gris);
-            margin: 20px 25px 10px 25px; font-weight: 600;
+            margin: 15px 25px 8px 25px; font-weight: 600;
         }
 
         /* --- CARRUSEL SUPERIOR HERO --- */
         .hero-carousel {
-            position: relative; width: 100%; height: 480px;
+            position: relative; width: 100%; height: 450px;
             background-color: var(--blanco); overflow: hidden;
             display: flex; align-items: center; justify-content: center;
             border-bottom: 1px solid var(--gris-claro);
@@ -162,13 +160,11 @@
             text-align: center; padding: 30px;
         }
         .carousel-slide.active { opacity: 1; }
-        .carousel-slide img { max-height: 240px; object-fit: contain; margin-bottom: 15px; }
-        .carousel-slide h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 10px; font-weight: 500; }
-        .carousel-slide p { font-size: 0.95rem; color: var(--subtitulo-gris); max-width: 600px; line-height: 1.6; }
+        .carousel-slide img { max-height: 220px; object-fit: contain; margin-bottom: 15px; }
+        .carousel-slide h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 10px; font-weight: 400; }
+        .carousel-slide p { font-size: 0.9rem; color: var(--subtitulo-gris); max-width: 550px; line-height: 1.6; }
 
-        .promo-slide {
-            background-color: var(--negro); color: var(--blanco);
-        }
+        .promo-slide { background-color: var(--negro); color: var(--blanco); }
         .promo-slide h2 { color: var(--blanco); }
         .promo-slide p { color: var(--gris-claro); }
 
@@ -176,16 +172,16 @@
         .hero-section {
             background-color: var(--blanco);
             text-align: center;
-            padding: 60px 20px;
+            padding: 70px 20px;
             border-bottom: 1px solid var(--gris-claro);
         }
         .hero-tag {
-            font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+            font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
             color: var(--subtitulo-gris); margin-bottom: 15px; display: block;
         }
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8rem; font-weight: 400;
+            font-size: 3rem; font-weight: 400;
             color: var(--negro); margin-bottom: 15px;
         }
         .hero-subtitle {
@@ -193,8 +189,8 @@
             margin-bottom: 15px;
         }
         .hero-desc {
-            font-size: 0.9rem; color: var(--subtitulo-gris);
-            max-width: 550px; margin: 0 auto 30px auto; line-height: 1.6;
+            font-size: 0.88rem; color: var(--subtitulo-gris);
+            max-width: 520px; margin: 0 auto 30px auto; line-height: 1.6;
         }
         .hero-buttons {
             display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
@@ -202,7 +198,7 @@
         .btn-editorial {
             background: var(--negro); color: var(--blanco);
             border: 1px solid var(--negro); padding: 12px 28px;
-            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
             letter-spacing: 2px; text-decoration: none; cursor: pointer;
             transition: all 0.2s;
         }
@@ -210,43 +206,43 @@
         .btn-editorial-outline {
             background: transparent; color: var(--negro);
             border: 1px solid var(--negro); padding: 12px 28px;
-            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
             letter-spacing: 2px; text-decoration: none; cursor: pointer;
             transition: all 0.2s;
         }
         .btn-editorial-outline:hover { background: var(--negro); color: var(--blanco); }
 
-        /* --- SECCIÓN COLECCIONES (ESTILO) --- */
+        /* --- SECCIÓN COLECCIONES --- */
         .collection-block {
             background-color: var(--blanco);
             border-bottom: 1px solid var(--gris-claro);
-            padding: 50px 20px;
+            padding: 60px 20px;
             display: flex; flex-direction: column; align-items: center; text-align: center;
         }
         .collection-img {
-            width: 100%; max-width: 800px; height: 380px; object-fit: cover;
+            width: 100%; max-width: 850px; height: 400px; object-fit: cover;
             margin-bottom: 25px; background: var(--marfil);
         }
         .collection-info {
             display: flex; justify-content: space-between; align-items: center;
-            width: 100%; max-width: 800px; padding: 0 10px;
+            width: 100%; max-width: 850px; padding: 0 10px;
         }
         .collection-title {
-            font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400;
+            font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 400;
         }
         .collection-link {
-            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;
+            font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px;
             color: var(--negro); text-decoration: none; font-weight: 600;
             border-bottom: 1px solid var(--negro); padding-bottom: 2px;
         }
 
-        /* --- SECCIÓN DESTACADOS / CATÁLOGO --- */
+        /* --- SECCIÓN DESTACADOS --- */
         .section-header {
             text-align: center; padding: 60px 20px 30px 20px;
             background-color: var(--blanco);
         }
         .section-tag {
-            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px;
+            font-size: 0.68rem; text-transform: uppercase; letter-spacing: 3px;
             color: var(--subtitulo-gris); margin-bottom: 10px; display: block;
         }
         .section-title {
@@ -254,33 +250,9 @@
             margin-bottom: 10px;
         }
         .section-action-link {
-            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;
+            font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px;
             color: var(--negro); text-decoration: none; font-weight: 600;
             border-bottom: 1px solid var(--negro); padding-bottom: 2px;
-        }
-
-        /* BUSCADOR Y FILTROS */
-        .filter-search-container {
-            background-color: var(--blanco);
-            padding: 0 20px 30px 20px; text-align: center;
-        }
-        .search-input {
-            width: 100%; max-width: 450px; padding: 12px 20px;
-            border: 1px solid var(--negro); border-radius: 0;
-            font-family: 'Montserrat', sans-serif; font-size: 0.85rem;
-            outline: none; background: var(--blanco); margin-bottom: 15px;
-        }
-        .filters {
-            display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
-        }
-        .filter-btn {
-            background: transparent; border: 1px solid var(--gris-claro);
-            color: var(--negro); padding: 8px 20px; font-size: 0.75rem;
-            cursor: pointer; text-transform: uppercase; letter-spacing: 1px;
-            transition: all 0.2s; font-weight: 500;
-        }
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--negro); color: var(--blanco); border-color: var(--negro);
         }
 
         /* CUADRÍCULA DE PRODUCTOS */
@@ -309,28 +281,28 @@
             display: flex; flex-direction: column; justify-content: space-between;
         }
         .card-category {
-            font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px;
+            font-size: 0.62rem; text-transform: uppercase; letter-spacing: 2px;
             color: var(--subtitulo-gris); margin-bottom: 6px;
         }
         .card-title {
-            font-family: 'Playfair Display', serif; font-size: 1.15rem;
+            font-family: 'Playfair Display', serif; font-size: 1.12rem;
             font-weight: 500; color: var(--negro); margin-bottom: 8px;
         }
         .card-price {
-            font-size: 0.95rem; font-weight: 600; color: var(--negro); margin-bottom: 15px;
+            font-size: 0.92rem; font-weight: 600; color: var(--negro); margin-bottom: 15px;
         }
         .card-actions {
             display: flex; gap: 8px;
         }
         .btn-add-cart {
             flex: 1; background-color: var(--negro); color: var(--blanco);
-            border: none; padding: 11px; font-size: 0.72rem;
+            border: none; padding: 11px; font-size: 0.7rem;
             text-transform: uppercase; letter-spacing: 1px; cursor: pointer;
             font-weight: 600; transition: background 0.2s;
         }
         .btn-add-cart:hover { background-color: #333333; }
         
-        /* Botón de WhatsApp monocromático y elegante */
+        /* Botón de WhatsApp monocromático estricto */
         .btn-wa-item {
             background-color: var(--blanco); color: var(--negro);
             border: 1px solid var(--negro); padding: 11px 14px;
@@ -338,19 +310,19 @@
             transition: all 0.2s; text-decoration: none;
         }
         .btn-wa-item:hover { background-color: var(--negro); color: var(--blanco); }
-        .btn-wa-item svg { fill: currentColor; width: 16px; height: 16px; }
+        .btn-wa-item svg { fill: currentColor; width: 15px; height: 15px; }
 
-        /* --- SECCIONES EDITORIALES ADICIONALES --- */
+        /* --- SECCIONES EDITORIALES --- */
         .authenticity-section {
             background-color: var(--negro); color: var(--blanco);
-            padding: 80px 20px; text-align: center; margin-top: 40px;
+            padding: 90px 20px; text-align: center; margin-top: 40px;
         }
-        .authenticity-section .tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; color: var(--gris-claro); margin-bottom: 15px; display: block; }
-        .authenticity-section h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 400; margin-bottom: 20px; }
-        .authenticity-section p { font-size: 0.95rem; color: var(--gris-claro); max-width: 650px; margin: 0 auto; line-height: 1.7; }
+        .authenticity-section .tag { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 3px; color: var(--gris-claro); margin-bottom: 15px; display: block; }
+        .authenticity-section h2 { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 400; margin-bottom: 20px; }
+        .authenticity-section p { font-size: 0.92rem; color: var(--gris-claro); max-width: 620px; margin: 0 auto; line-height: 1.7; }
 
         .olfactive-section {
-            background-color: var(--blanco); padding: 80px 20px; border-bottom: 1px solid var(--gris-claro);
+            background-color: var(--blanco); padding: 90px 20px; border-bottom: 1px solid var(--gris-claro);
         }
         .olfactive-header { text-align: center; max-width: 600px; margin: 0 auto 50px auto; }
         .olfactive-grid {
@@ -358,16 +330,16 @@
             gap: 30px;
         }
         .olfactive-item { border-top: 1px solid var(--negro); padding-top: 20px; }
-        .olfactive-num { font-size: 0.75rem; color: var(--subtitulo-gris); margin-bottom: 8px; display: block; font-weight: 600; }
-        .olfactive-item h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 500; margin-bottom: 8px; }
-        .olfactive-item p { font-size: 0.82rem; color: var(--subtitulo-gris); line-height: 1.5; }
+        .olfactive-num { font-size: 0.72rem; color: var(--subtitulo-gris); margin-bottom: 8px; display: block; font-weight: 600; }
+        .olfactive-item h4 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 500; margin-bottom: 8px; }
+        .olfactive-item p { font-size: 0.8rem; color: var(--subtitulo-gris); line-height: 1.5; }
 
         .gifts-section {
-            background-color: var(--marfil); padding: 80px 20px; text-align: center; border-bottom: 1px solid var(--gris-claro);
+            background-color: var(--marfil); padding: 90px 20px; text-align: center; border-bottom: 1px solid var(--gris-claro);
         }
-        .gifts-container { max-width: 650px; margin: 0 auto; }
+        .gifts-container { max-width: 620px; margin: 0 auto; }
 
-        /* --- PANEL LATERAL DEL CARRITO (SLIDE-OVER) --- */
+        /* --- PANEL LATERAL DEL CARRITO --- */
         .cart-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.4); z-index: 998;
@@ -383,10 +355,10 @@
         .cart-drawer.open { right: 0; }
 
         .cart-header {
-            padding: 20px 25px; border-bottom: 1px solid var(--gris-claro);
+            padding: 22px 25px; border-bottom: 1px solid var(--gris-claro);
             display: flex; justify-content: space-between; align-items: center;
         }
-        .cart-header h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 500; }
+        .cart-header h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 400; }
         .close-cart { background: none; border: none; font-size: 1.1rem; cursor: pointer; }
 
         .cart-body { padding: 20px 25px; flex-grow: 1; overflow-y: auto; }
@@ -397,64 +369,85 @@
         .cart-item img { width: 60px; height: 60px; object-fit: contain; background: var(--marfil); padding: 5px; }
         .cart-item-details { flex-grow: 1; }
         .cart-item-title { font-size: 0.85rem; font-weight: 600; margin-bottom: 3px; }
-        .cart-item-price { font-size: 0.8rem; color: var(--subtitulo-gris); margin-bottom: 6px; }
+        .cart-item-price { font-size: 0.78rem; color: var(--subtitulo-gris); margin-bottom: 6px; }
         .quantity-controls { display: flex; align-items: center; gap: 10px; }
         .quantity-controls button { background: var(--gris-claro); border: none; width: 22px; height: 22px; cursor: pointer; font-weight: bold; }
-        .remove-item { background: none; border: none; color: #990000; font-size: 0.75rem; cursor: pointer; margin-top: 5px; display: block; }
+        .remove-item { background: none; border: none; color: #990000; font-size: 0.72rem; cursor: pointer; margin-top: 5px; display: block; }
 
         .cart-actions-top {
-            display: flex; justify-content: space-between; font-size: 0.75rem; text-transform: uppercase;
+            display: flex; justify-content: space-between; font-size: 0.72rem; text-transform: uppercase;
             letter-spacing: 1px; margin-bottom: 20px; border-bottom: 1px solid var(--gris-claro); padding-bottom: 10px;
         }
         .cart-actions-top a { color: var(--negro); text-decoration: none; cursor: pointer; font-weight: 600; }
 
         .cart-footer { padding: 20px 25px; border-top: 1px solid var(--gris-claro); background: var(--marfil); }
-        .cart-summary-table { width: 100%; font-size: 0.85rem; margin-bottom: 15px; }
+        .cart-summary-table { width: 100%; font-size: 0.82rem; margin-bottom: 15px; }
         .cart-summary-table td { padding: 4px 0; color: var(--subtitulo-gris); }
         .cart-summary-table td:last-child { text-align: right; color: var(--negro); font-weight: 600; }
-        .cart-total-row td { font-size: 1.05rem; font-weight: 700; color: var(--negro); border-top: 1px solid var(--borde-suave); padding-top: 8px !important; }
+        .cart-total-row td { font-size: 1rem; font-weight: 700; color: var(--negro); border-top: 1px solid var(--borde-suave); padding-top: 8px !important; }
 
         .checkout-form input {
             width: 100%; padding: 10px 12px; margin-bottom: 10px; border: 1px solid var(--borde-suave);
-            border-radius: 0; font-family: 'Montserrat', sans-serif; font-size: 0.82rem; background: var(--blanco); outline: none;
+            border-radius: 0; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; background: var(--blanco); outline: none;
         }
         .btn-whatsapp-checkout {
             display: block; width: 100%; background-color: var(--negro); color: var(--blanco);
             text-align: center; padding: 12px; text-decoration: none; font-weight: 600;
-            text-transform: uppercase; font-size: 0.8rem; border-radius: 0; border: none; cursor: pointer; letter-spacing: 1.5px;
+            text-transform: uppercase; font-size: 0.78rem; border-radius: 0; border: none; cursor: pointer; letter-spacing: 1.5px;
         }
-        .checkout-note { font-size: 0.7rem; color: var(--subtitulo-gris); text-align: center; margin-top: 10px; line-height: 1.4; }
+        .checkout-note { font-size: 0.68rem; color: var(--subtitulo-gris); text-align: center; margin-top: 10px; line-height: 1.4; }
 
-        /* --- PIE DE PÁGINA --- */
+        /* --- PIE DE PÁGINA COMPLETO IDÉNTICO A REFERENCIA --- */
         footer {
-            background-color: var(--blanco); padding: 60px 20px; text-align: center; border-top: 1px solid var(--gris-claro);
+            background-color: var(--blanco); padding: 70px 30px 40px 30px; border-top: 1px solid var(--gris-claro);
         }
-        footer h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 400; margin-bottom: 10px; }
-        footer p { color: var(--subtitulo-gris); font-size: 0.85rem; margin-bottom: 25px; max-width: 500px; margin-left: auto; margin-right: auto; }
-        .social-links { display: flex; justify-content: center; gap: 15px; }
-        .social-btn {
-            background: var(--negro); color: var(--blanco); padding: 10px 22px;
-            border-radius: 30px; text-decoration: none; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; transition: opacity 0.2s;
+        .footer-content {
+            max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px; text-align: left; margin-bottom: 50px;
         }
-        .social-btn:hover { opacity: 0.8; }
+        .footer-col h4 {
+            font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 500; margin-bottom: 18px; text-transform: uppercase; letter-spacing: 1.5px;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { text-decoration: none; color: var(--subtitulo-gris); font-size: 0.82rem; transition: color 0.2s; }
+        .footer-col ul li a:hover { color: var(--negro); }
+        .footer-col p { color: var(--subtitulo-gris); font-size: 0.82rem; line-height: 1.6; margin-bottom: 15px; }
+
+        .footer-socials { display: flex; gap: 12px; margin-top: 15px; }
+        .footer-social-btn {
+            width: 38px; height: 38px; border: 1px solid var(--negro); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: var(--negro); text-decoration: none; transition: all 0.2s;
+        }
+        .footer-social-btn:hover { background: var(--negro); color: var(--blanco); }
+        .footer-social-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+        .footer-bottom {
+            text-align: center; border-top: 1px solid var(--gris-claro); padding-top: 30px; font-size: 0.75rem; color: var(--subtitulo-gris);
+        }
     </style>
 </head>
 <body>
 
     <!-- ENCABEZADO -->
     <header>
-        <div class="header-left">
-            <button class="menu-toggle-btn" onclick="toggleNavMenu()">☰</button>
-            <a href="#" class="logo-container">
-                <h1>ASM</h1>
-                <span>perfumes</span>
-            </a>
-        </div>
+        <a href="#" class="logo-container">
+            <h1>ASM</h1>
+            <span>perfumes</span>
+        </a>
         <div class="header-right">
-            <button class="search-icon-btn" onclick="focusSearch()">🔍</button>
-            <button class="cart-icon-btn" onclick="toggleCart()">
-                🛒
+            <!-- Icono de búsqueda -->
+            <button class="icon-btn" onclick="focusSearch()" aria-label="Buscar">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+            <!-- Icono de carrito (bolsa de compras minimalista exacta) -->
+            <button class="icon-btn" onclick="toggleCart()" aria-label="Carrito">
+                <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
                 <span class="cart-badge" id="cart-counter">0</span>
+            </button>
+            <!-- Icono de menú hamburguesa (tres rayitas) -->
+            <button class="icon-btn" onclick="toggleNavMenu()" aria-label="Menú">
+                <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
         </div>
     </header>
@@ -478,35 +471,38 @@
             <li><a href="https://wa.me/573018738631" target="_blank">Contacto</a></li>
         </ul>
         <div class="side-menu-section-title">Información</div>
-        <ul class="side-menu-list">
+        <ul class="side-menu-list" style="border-bottom: 1px solid var(--gris-claro);">
             <li><a href="#" onclick="toggleNavMenu()">Nuestra esencia</a></li>
+            <li><a href="#" onclick="toggleNavMenu()">Contacto</a></li>
             <li><a href="#" onclick="toggleNavMenu()">Preguntas frecuentes</a></li>
             <li><a href="#" onclick="toggleNavMenu()">Políticas de compra</a></li>
             <li><a href="#" onclick="toggleNavMenu()">Envíos y devoluciones</a></li>
             <li><a href="#" onclick="toggleNavMenu()">Privacidad y tratamiento de datos</a></li>
         </ul>
         <div class="side-menu-section-title">Síguenos</div>
-        <div style="padding: 0 25px 30px 25px; display: flex; gap: 10px;">
-            <a href="https://www.instagram.com/asmperfumes_/" target="_blank" class="social-btn" style="padding: 8px 16px;">Instagram</a>
-            <a href="https://www.tiktok.com/@asmperfumes_" target="_blank" class="social-btn" style="padding: 8px 16px;">TikTok</a>
+        <div style="padding: 10px 25px 30px 25px;">
+            <p style="font-size: 0.8rem; color: var(--subtitulo-gris); margin-bottom: 15px; line-height: 1.5;">Síguenos en redes sociales y descubre el universo de ASMperfumes, nuestras fragancias y novedades.</p>
+            <div style="display: flex; gap: 10px;">
+                <a href="https://www.instagram.com/asmperfumes_/" target="_blank" class="footer-social-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                <a href="https://www.tiktok.com/@asmperfumes_" target="_blank" class="footer-social-btn"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.57-1.31 1.56-1.3 2.56.02.82.42 1.61 1.09 2.08.79.57 1.84.72 2.77.42.92-.3 1.68-1.02 1.98-1.94.13-.45.18-.92.18-1.39V.02z"/></svg></a>
+                <a href="https://wa.me/573018738631" target="_blank" class="footer-social-btn"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg></a>
+            </div>
         </div>
     </div>
 
     <!-- CARRUSEL SUPERIOR HERO SECTION -->
     <div class="hero-carousel" id="hero-carousel">
-        <!-- Slide 1: Promoción -->
         <div class="carousel-slide active promo-slide">
             <h2>Envío Nacional Gratis</h2>
             <p>Disfruta de envío totalmente gratis a todo el país por compras superiores a $250.000 COP.</p>
         </div>
-        <!-- Slide 2: Identidad -->
         <div class="carousel-slide">
             <h2>ASMperfumes</h2>
             <p>El arte de encontrar tu esencia con fragancias 100 % originales para hombre, mujer y unisex.</p>
         </div>
     </div>
 
-    <!-- PÁGINA DE INICIO (ESTRUCTURA IDÉNTICA) -->
+    <!-- PÁGINA DE INICIO -->
     <section class="hero-section">
         <span class="hero-tag">ASMperfumes · 100 % Originales</span>
         <h2 class="hero-title">El arte de encontrar<br>tu esencia</h2>
@@ -543,26 +539,16 @@
         </div>
     </div>
 
-    <!-- SECCIÓN DE PERFUMES DESTACADOS / CATÁLOGO -->
+    <!-- SECCIÓN DE PERFUMES DESTACADOS (SOLO LOS DESTACADOS EN INICIO) -->
     <div id="catalogo">
         <div class="section-header">
             <span class="section-tag">Selección</span>
             <h2 class="section-title">Perfumes destacados</h2>
             <a href="#" class="section-action-link" onclick="filterPerfumes('todos')">Ver catálogo completo</a>
         </div>
-
-        <div class="filter-search-container">
-            <input type="text" id="search-input" class="search-input" placeholder="Buscar por nombre del perfume..." oninput="handleSearch()">
-            <div class="filters">
-                <button class="filter-btn active" data-cat="todos" onclick="filterPerfumes('todos')">Todos</button>
-                <button class="filter-btn" data-cat="masculino" onclick="filterPerfumes('masculino')">Hombre</button>
-                <button class="filter-btn" data-cat="femenino" onclick="filterPerfumes('femenino')">Mujer</button>
-                <button class="filter-btn" data-cat="unisex" onclick="filterPerfumes('unisex')">Unisex</button>
-            </div>
-        </div>
     </div>
 
-    <!-- CUADRÍCULA DE PRODUCTOS -->
+    <!-- CUADRÍCULA DE DESTACADOS -->
     <div class="container" id="perfume-container"></div>
 
     <!-- COMPROMISO / AUTENTICIDAD -->
@@ -577,7 +563,7 @@
         <div class="olfactive-header">
             <span class="section-tag">Guía olfativa</span>
             <h2 class="section-title">Familias olfativas</h2>
-            <p style="color: var(--subtitulo-gris); font-size: 0.9rem; margin-top: 10px;">Una guía para descubrir qué estilo de fragancia va contigo. Pronto podrás filtrar el catálogo por familia.</p>
+            <p style="color: var(--subtitulo-gris); font-size: 0.88rem; margin-top: 10px;">Una guía para descubrir qué estilo de fragancia va contigo. Pronto podrás filtrar el catálogo por familia.</p>
         </div>
         <div class="olfactive-grid">
             <div class="olfactive-item">
@@ -603,18 +589,18 @@
         </div>
     </section>
 
-    <!-- SECCIÓN REGALOS -->
+    <!-- SECCIÓN REGALOS (SIN IMAGEN FORZADA) -->
     <section class="gifts-section">
         <div class="gifts-container">
             <span class="section-tag">Regalos</span>
             <h2 class="section-title" style="margin-bottom: 15px;">Un aroma especial para cada ocasión</h2>
-            <p style="color: var(--subtitulo-gris); margin-bottom: 25px; font-size: 0.95rem;">Encuentra una fragancia que convierta cada regalo en un recuerdo especial.</p>
+            <p style="color: var(--subtitulo-gris); margin-bottom: 25px; font-size: 0.92rem;">Encuentra una fragancia que convierta cada regalo en un recuerdo especial.</p>
             <a href="#catalogo" class="btn-editorial-outline" onclick="filterPerfumes('todos')">Ver catálogo</a>
         </div>
     </section>
 
     <!-- CIERRE DE INICIO -->
-    <section style="background-color: var(--blanco); padding: 80px 20px; text-align: center; border-bottom: 1px solid var(--gris-claro);">
+    <section style="background-color: var(--blanco); padding: 90px 20px; text-align: center; border-bottom: 1px solid var(--gris-claro);">
         <h2 class="section-title" style="margin-bottom: 25px;">Encuentra tu próxima fragancia favorita</h2>
         <div class="hero-buttons">
             <a href="#catalogo" class="btn-editorial" onclick="filterPerfumes('todos')">Explorar catálogo</a>
@@ -622,11 +608,11 @@
         </div>
     </section>
 
-    <!-- PANEL LATERAL DEL CARRITO (SLIDE-OVER) -->
+    <!-- PANEL LATERAL DEL CARRITO -->
     <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
     <div class="cart-drawer" id="cart-drawer">
         <div class="cart-header">
-            <h3>Carrito <span id="cart-count-title" style="font-size: 0.9rem; color: var(--subtitulo-gris);">(0 productos)</span></h3>
+            <h3>Carrito <span id="cart-count-title" style="font-size: 0.85rem; color: var(--subtitulo-gris);">(0 productos)</span></h3>
             <button class="close-cart" onclick="toggleCart()">✕</button>
         </div>
         <div class="cart-body">
@@ -634,9 +620,7 @@
                 <a href="#" onclick="toggleCart()">Continuar comprando</a>
                 <a href="#" onclick="clearCart()" style="color: #990000;">Vaciar carrito</a>
             </div>
-            <div id="cart-items-container">
-                <!-- Ítems del carrito -->
-            </div>
+            <div id="cart-items-container"></div>
         </div>
         <div class="cart-footer">
             <table class="cart-summary-table">
@@ -662,50 +646,80 @@
         </div>
     </div>
 
-    <!-- PIE DE PÁGINA -->
+    <!-- PIE DE PÁGINA COMPLETO IDÉNTICO A REFERENCIA -->
     <footer>
-        <a href="#" class="logo-container" style="text-decoration:none; color:var(--negro); display: inline-block; margin-bottom: 15px;">
-            <h1 style="font-size: 1.8rem;">ASM</h1>
-            <span style="font-size: 0.7rem;">perfumes</span>
-        </a>
-        <p>Perfumes 100 % originales para hombre, mujer y unisex. Encuentra el aroma que expresa tu esencia.</p>
-        <div class="social-links" style="margin-bottom: 30px;">
-            <a href="https://www.instagram.com/asmperfumes_/" target="_blank" class="social-btn">Instagram</a>
-            <a href="https://www.tiktok.com/@asmperfumes_" target="_blank" class="social-btn">TikTok</a>
+        <div class="footer-content">
+            <div class="footer-col">
+                <a href="#" class="logo-container" style="text-decoration:none; color:var(--negro); display: inline-block; margin-bottom: 12px;">
+                    <h1 style="font-size: 1.4rem;">ASM</h1>
+                    <span style="font-size: 0.5rem;">perfumes</span>
+                </a>
+                <p>Perfumes 100 % originales para hombre, mujer y unisex. Encuentra el aroma que expresa tu esencia.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Tienda</h4>
+                <ul>
+                    <li><a href="#" onclick="filterPerfumes('todos')">Inicio</a></li>
+                    <li><a href="#" onclick="filterPerfumes('masculino')">Hombre</a></li>
+                    <li><a href="#" onclick="filterPerfumes('femenino')">Mujer</a></li>
+                    <li><a href="#" onclick="filterPerfumes('unisex')">Unisex</a></li>
+                    <li><a href="#" onclick="filterPerfumes('todos')">Catálogo</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Información</h4>
+                <ul>
+                    <li><a href="#">Nuestra esencia</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#">Políticas de compra</a></li>
+                    <li><a href="#">Envíos y devoluciones</a></li>
+                    <li><a href="#">Privacidad y tratamiento de datos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Síguenos</h4>
+                <p>Síguenos en redes sociales y descubre el universo de ASMperfumes, nuestras fragancias y novedades.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/asmperfumes_/" target="_blank" class="footer-social-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                    <a href="https://www.tiktok.com/@asmperfumes_" target="_blank" class="footer-social-btn"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.57-1.31 1.56-1.3 2.56.02.82.42 1.61 1.09 2.08.79.57 1.84.72 2.77.42.92-.3 1.68-1.02 1.98-1.94.13-.45.18-.92.18-1.39V.02z"/></svg></a>
+                    <a href="https://wa.me/573018738631" target="_blank" class="footer-social-btn"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg></a>
+                </div>
+            </div>
         </div>
-        <p style="font-size: 0.75rem; color: var(--subtitulo-gris);">© 2026 ASMperfumes. Todos los derechos reservados.</p>
+        <div class="footer-bottom">
+            © 2026 ASMperfumes. Todos los derechos reservados.
+        </div>
     </footer>
 
     <script>
         const PHONE_NUMBER = "573018738631";
 
-        // CATÁLOGO OFICIAL DE LOS 17 PERFUMES EXACTOS
         const perfumes = [
-            { id: 1, nombre: "ARMAF Ventana Pour Homme", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "VENTANA.JPG" },
-            { id: 2, nombre: "Odyssey Eau De Montagne", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "MONTAGNE.JPG" },
-            { id: 3, nombre: "Habik", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 180000, precioStr: "$ 180.000 COP", img: "HABIK.JPG" },
-            { id: 4, nombre: "Lynked Freedom", genero: "masculino", presentacion: "3.4 oz", concentracion: "", precioNum: 280000, precioStr: "$ 280.000 COP", img: "LYNKED.JPG" },
-            { id: 5, nombre: "9 PM", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 250000, precioStr: "$ 250.000 COP", img: "9PMELIXIR.JPG" },
-            { id: 6, nombre: "Odyssey Artisto Red Edition", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 230000, precioStr: "$ 230.000 COP", img: "ARTISTO.JPG" },
-            { id: 7, nombre: "Hawas", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 230000, precioStr: "$ 230.000 COP", img: "hawasforhim.jpg" },
-            { id: 8, nombre: "Nautica", genero: "masculino", presentacion: "3.3 oz", concentracion: "EDT", precioNum: 110000, precioStr: "$ 110.000 COP", img: "NAUTICACLASSIC.JPG" },
+            { id: 1, nombre: "ARMAF Ventana Pour Homme", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "VENTANA.JPG", destacado: true },
+            { id: 2, nombre: "Odyssey Eau De Montagne", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "MONTAGNE.JPG", destacado: false },
+            { id: 3, nombre: "Habik", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 180000, precioStr: "$ 180.000 COP", img: "HABIK.JPG", destacado: false },
+            { id: 4, nombre: "Lynked Freedom", genero: "masculino", presentacion: "3.4 oz", concentracion: "", precioNum: 280000, precioStr: "$ 280.000 COP", img: "LYNKED.JPG", destacado: true },
+            { id: 5, nombre: "9 PM", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 250000, precioStr: "$ 250.000 COP", img: "9PMELIXIR.JPG", destacado: true },
+            { id: 6, nombre: "Odyssey Artisto Red Edition", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 230000, precioStr: "$ 230.000 COP", img: "ARTISTO.JPG", destacado: false },
+            { id: 7, nombre: "Hawas", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 230000, precioStr: "$ 230.000 COP", img: "hawasforhim.jpg", destacado: false },
+            { id: 8, nombre: "Nautica", genero: "masculino", presentacion: "3.3 oz", concentracion: "EDT", precioNum: 110000, precioStr: "$ 110.000 COP", img: "NAUTICACLASSIC.JPG", destacado: false },
             
-            { id: 9, nombre: "Philos Rosso", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "PHILOS.JPG" },
-            { id: 10, nombre: "Pepe Jeans for Her", genero: "femenino", presentacion: "2.7 oz", concentracion: "", precioNum: 180000, precioStr: "$ 180.000 COP", img: "PEPEJEANSFORHER.JPG" },
-            { id: 11, nombre: "Bade'e Al Oud Noble Blush", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 200000, precioStr: "$ 200.000 COP", img: "noblebush.jpg" },
-            { id: 12, nombre: "ARMAF Legesi", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 140000, precioStr: "$ 140.000 COP", img: "LEGESIPOURFEMME.JPG" },
-            { id: 13, nombre: "The Kingdom", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "THEKINGDOM.JPG" },
+            { id: 9, nombre: "Philos Rosso", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "PHILOS.JPG", destacado: true },
+            { id: 10, nombre: "Pepe Jeans for Her", genero: "femenino", presentacion: "2.7 oz", concentracion: "", precioNum: 180000, precioStr: "$ 180.000 COP", img: "PEPEJEANSFORHER.JPG", destacado: false },
+            { id: 11, nombre: "Bade'e Al Oud Noble Blush", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 200000, precioStr: "$ 200.000 COP", img: "noblebush.jpg", destacado: true },
+            { id: 12, nombre: "ARMAF Legesi", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 140000, precioStr: "$ 140.000 COP", img: "LEGESIPOURFEMME.JPG", destacado: false },
+            { id: 13, nombre: "The Kingdom", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "THEKINGDOM.JPG", destacado: false },
             
-            { id: 14, nombre: "Fakhar Gold", genero: "unisex", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "fakhar.jpg" },
-            { id: 15, nombre: "Khamrah", genero: "unisex", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 180000, precioStr: "$ 180.000 COP", img: "KHAMRAH.JPG" },
-            { id: 16, nombre: "Khamrah Dukhan", genero: "unisex", presentacion: "3.4 oz", concentracion: "", precioNum: 220000, precioStr: "$ 220.000 COP", img: "khamrahdukham.jpg" },
-            { id: 17, nombre: "Odyssey Mandarin Sky Elixir", genero: "unisex", presentacion: "3.4 oz", concentracion: "", precioNum: 250000, precioStr: "$ 250.000 COP", img: "MANDARINSKYELIXIR.JPG" }
+            { id: 14, nombre: "Fakhar Gold", genero: "unisex", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "fakhar.jpg", destacado: false },
+            { id: 15, nombre: "Khamrah", genero: "unisex", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 180000, precioStr: "$ 180.000 COP", img: "KHAMRAH.JPG", destacado: true },
+            { id: 16, nombre: "Khamrah Dukhan", genero: "unisex", presentacion: "3.4 oz", concentracion: "", precioNum: 220000, precioStr: "$ 220.000 COP", img: "khamrahdukham.jpg", destacado: false },
+            { id: 17, nombre: "Odyssey Mandarin Sky Elixir", genero: "unisex", presentacion: "3.4 oz", concentracion: "", precioNum: 250000, precioStr: "$ 250.000 COP", img: "MANDARINSKYELIXIR.JPG", destacado: true }
         ];
 
         let cart = [];
-        let currentCategory = 'todos';
+        let currentCategory = 'destacados';
 
-        // CARRUSEL SUPERIOR AUTOMÁTICO
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
         function nextSlide() {
@@ -715,7 +729,6 @@
         }
         setInterval(nextSlide, 5000);
 
-        // RENDERIZAR PRODUCTOS
         function renderPerfumes(data) {
             const container = document.getElementById('perfume-container');
             container.innerHTML = '';
@@ -734,7 +747,7 @@
                 container.innerHTML += `
                     <div class="card">
                         <div class="card-img-container">
-                            <img src="${p.img}" alt="${p.nombre}" class="card-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'250\'><rect width=\'100%\' height=\'100%\' fill=\'%23F7F5F0\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Montserrat\' font-size=\'11\' fill=\'%23777777\'>FOTOGRAFÍA PRÓXIMAMENTE</text></svg>';">
+                            <img src="${p.img}" alt="${p.nombre}" class="card-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'250\'><rect width=\'100%\' height=\'100%\' fill=\'%23F7F5F0\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Montserrat\' font-size=\'10\' fill=\'%23777777\'>FOTOGRAFÍA PRÓXIMAMENTE</text></svg>';">
                         </div>
                         <div class="card-content">
                             <div>
@@ -754,34 +767,26 @@
             });
         }
 
-        // FILTROS Y BÚSQUEDA
         function filterPerfumes(cat) {
             currentCategory = cat;
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-cat') === cat);
-            });
             handleSearch();
         }
 
         function handleSearch() {
-            const query = document.getElementById('search-input').value.toLowerCase().trim();
             let filtered = perfumes;
-            if (currentCategory !== 'todos') {
-                filtered = filtered.filter(p => p.genero === currentCategory);
-            }
-            if (query !== '') {
-                filtered = filtered.filter(p => p.nombre.toLowerCase().includes(query));
+            if (currentCategory === 'destacados') {
+                filtered = perfumes.filter(p => p.destacado);
+            } else if (currentCategory !== 'todos') {
+                filtered = perfumes.filter(p => p.genero === currentCategory);
             }
             renderPerfumes(filtered);
         }
 
         function focusSearch() {
-            const searchElem = document.getElementById('search-input');
-            searchElem.scrollIntoView({ behavior: 'smooth' });
-            searchElem.focus();
+            const containerElem = document.getElementById('catalogo');
+            containerElem.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // CARRITO SLIDE-OVER
         function toggleCart() {
             document.getElementById('cart-drawer').classList.toggle('open');
             document.getElementById('cart-overlay').classList.toggle('open');
@@ -863,7 +868,7 @@
                             </div>
                             <button class="remove-item" onclick="removeFromCart(${item.id})">Eliminar</button>
                         </div>
-                        <div style="font-size: 0.85rem; font-weight: 600; text-align: right;">$ ${subtotal.toLocaleString('es-CO')} COP</div>
+                        <div style="font-size: 0.82rem; font-weight: 600; text-align: right;">$ ${subtotal.toLocaleString('es-CO')} COP</div>
                     </div>
                 `;
             });
@@ -904,8 +909,8 @@
             window.open(url, '_blank');
         }
 
-        // Inicializar
-        renderPerfumes(perfumes);
+        // Inicializar mostrando solo los destacados en el inicio
+        renderPerfumes(perfumes.filter(p => p.destacado));
     </script>
 </body>
 </html>
