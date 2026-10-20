@@ -862,20 +862,29 @@ text-align: center; border-top: 1px solid var(--gris-claro); padding-top: 30px; 
 </a>
 
 <!-- CARRUSEL SUPERIOR HERO (SOLO EN INICIO) -->
-<div class="hero-carousel" id="hero-carousel">
-<div class="carousel-slide active promo-slide" id="slide-0">
-<h2>Envío Nacional Gratis</h2>
-<p>Disfruta de envío totalmente gratis a todo el país por compras superiores a $250.000 COP.</p>
-</div>
-<div class="carousel-slide" id="slide-1">
-<h2>ASMperfumes</h2>
-<p>El arte de encontrar tu esencia con fragancias 100 % originales para hombre, mujer y unisex.</p>
-</div>
-<div class="carousel-dots" id="carousel-dots">
-<button class="dot promo-slide-dot active" onclick="currentSlideIndex(0)" aria-label="Slide 1"></button>
-<button class="dot" onclick="currentSlideIndex(1)" aria-label="Slide 2"></button>
-</div>
-</div>
+    <div class="hero-carousel" id="hero-carousel">
+        <!-- Diapositiva 1 con texto -->
+        <div class="carousel-slide active promo-slide" id="slide-0">
+            <h2>Envío Nacional Gratis</h2>
+            <p>Disfruta de envío totalmente gratis a todo el país por compras superiores a $250.000 COP.</p>
+        </div>
+
+        <!-- Diapositiva 2 con texto -->
+        <div class="carousel-slide" id="slide-1">
+            <h2>ASMperfumes</h2>
+            <p>El arte de encontrar tu esencia con fragancias 100 % originales para hombre, mujer y unisex.</p>
+        </div>
+
+        <!-- Diapositiva 3 NUEVA (Solo imagen limpia sin texto) -->
+        <div class="carousel-slide" id="slide-2" style="background: url('fondo.jpg') center/cover no-repeat;"></div>
+
+        <!-- Circulitos indicadores de navegación -->
+        <div class="carousel-dots" id="carousel-dots">
+            <button class="dot promo-slide-dot active" onclick="currentSlideIndex(0)" aria-label="Slide 1"></button>
+            <button class="dot" onclick="currentSlideIndex(1)" aria-label="Slide 2"></button>
+            <button class="dot" onclick="currentSlideIndex(2)" aria-label="Slide 3"></button>
+        </div>
+    </div>
 
 <!-- CONTENEDOR PRINCIPAL DE INICIO -->
 <div id="home-view">
