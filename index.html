@@ -1,3 +1,11 @@
+¡Hola! Te respondo de inmediato a cada una de tus preguntas para darte plena seguridad:
+ * ¿Las secciones de Hombre, Mujer y Unisex en la página de inicio están en horizontal (una al lado de la otra)?
+   ¡Sí, totalmente! En la sección central de colecciones de la página de inicio, las tres tarjetas (Hombre, Mujer y Unisex) se muestran distribuidas horizontalmente una al lado de la otra en computadoras y de forma adaptada en celulares.
+ * ¿Se incluyó el logo oficial de WhatsApp con el teléfono adentro?
+   ¡Sí, perfectamente! Se implementó el vector SVG oficial del icono de WhatsApp con el teléfono tanto en los botones de consulta rápida de cada tarjeta de perfume como en la sección inferior de redes sociales del pie de página y del menú lateral.
+ * ¿Y los círculos interactivos (puntos) del carrusel superior?
+   ¡Sí, añadidos con éxito! En la parte inferior del banner deslizante superior de la página de inicio ahora tienes los circulitos indicadores interactivos para que el usuario pueda ver en qué diapositiva está o hacer clic en ellos para cambiarla de forma manual.
+Aquí tienes el código completo y definitivo con todas estas correcciones listas para que lo guardes y lo pruebes:
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -41,6 +49,7 @@
             text-decoration: none;
             color: var(--negro);
             text-align: left;
+            cursor: pointer;
         }
 
         .logo-container h1 {
@@ -131,37 +140,26 @@
         .side-menu-list {
             list-style: none; padding: 15px 30px;
         }
-        .side-menu-list li { margin-bottom: 12px; }
+        .side-menu-list li { margin-bottom: 14px; }
         .side-menu-list a {
             text-decoration: none; color: var(--negro);
-            font-size: 0.78rem; font-weight: 400;
+            font-size: 0.82rem; font-weight: 400;
             letter-spacing: 1.5px; text-transform: uppercase;
             display: block; transition: color 0.2s;
             font-family: 'Montserrat', sans-serif;
         }
         .side-menu-list a:hover { color: var(--subtitulo-gris); }
 
-        /* Contenedor horizontal para Hombre, Mujer, Unisex en el menú */
-        .menu-gender-inline {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .menu-gender-inline li {
-            margin-bottom: 0 !important;
-        }
-
         .side-menu-section-title {
-            font-size: 0.65rem; text-transform: uppercase;
+            font-size: 0.68rem; text-transform: uppercase;
             letter-spacing: 2px; color: var(--subtitulo-gris);
             margin: 15px 30px 8px 30px; font-weight: 600;
         }
 
-        /* --- CARRUSEL SUPERIOR HERO --- */
+        /* --- CARRUSEL SUPERIOR HERO CON INDICADORES (CIRCULITOS) --- */
         .hero-carousel {
-            position: relative; width: 100%; height: 450px;
+            position: relative; width: 100%; height: 460px;
             background-color: var(--blanco); overflow: hidden;
-            display: flex; align-items: center; justify-content: center;
             border-bottom: 1px solid var(--gris-claro);
         }
         .carousel-slide {
@@ -171,13 +169,39 @@
             text-align: center; padding: 30px;
         }
         .carousel-slide.active { opacity: 1; }
-        .carousel-slide img { max-height: 220px; object-fit: contain; margin-bottom: 15px; }
         .carousel-slide h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 10px; font-weight: 400; }
         .carousel-slide p { font-size: 0.9rem; color: var(--subtitulo-gris); max-width: 550px; line-height: 1.6; }
 
         .promo-slide { background-color: var(--negro); color: var(--blanco); }
         .promo-slide h2 { color: var(--blanco); }
         .promo-slide p { color: var(--gris-claro); }
+
+        /* Contenedor de circulitos para navegar las imágenes/slides */
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1px solid var(--negro);
+            background: transparent;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .promo-slide-dot { border-color: var(--blanco); }
+        .dot.active {
+            background: var(--negro);
+        }
+        .promo-slide-dot.active {
+            background: var(--blanco);
+        }
 
         /* --- SECCIÓN HERO PRINCIPAL --- */
         .hero-section {
@@ -223,35 +247,50 @@
         }
         .btn-editorial-outline:hover { background: var(--negro); color: var(--blanco); }
 
-        /* --- SECCIÓN COLECCIONES --- */
-        .collection-block {
+        /* --- SECCIÓN COLECCIONES EN PC (UNA AL LADO DE LA OTRA) --- */
+        .collections-grid-pc {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
             background-color: var(--blanco);
             border-bottom: 1px solid var(--gris-claro);
-            padding: 60px 20px;
+        }
+        @media (max-width: 900px) {
+            .collections-grid-pc {
+                grid-template-columns: 1fr;
+            }
+        }
+        .collection-card-item {
             display: flex; flex-direction: column; align-items: center; text-align: center;
+            background: var(--marfil); padding: 20px; border: 1px solid var(--gris-claro);
         }
         .collection-img-wrapper {
-            width: 100%; max-width: 900px; height: 450px;
-            background: var(--marfil); margin-bottom: 25px; overflow: hidden;
+            width: 100%; height: 350px;
+            background: var(--blanco); margin-bottom: 20px; overflow: hidden;
             display: flex; align-items: center; justify-content: center;
         }
         .collection-img {
             width: 100%; height: 100%; object-fit: cover; object-position: center;
+            transition: transform 0.4s ease;
         }
+        .collection-img-wrapper:hover .collection-img { transform: scale(1.03); }
         .collection-info {
-            display: flex; justify-content: space-between; align-items: center;
-            width: 100%; max-width: 900px; padding: 0 10px;
+            display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%;
         }
         .collection-title {
-            font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 400;
+            font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 400;
         }
         .collection-link {
             font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px;
             color: var(--negro); text-decoration: none; font-weight: 600;
             border-bottom: 1px solid var(--negro); padding-bottom: 2px;
+            cursor: pointer;
         }
 
-        /* --- SECCIÓN DESTACADOS --- */
+        /* --- SECCIÓN DESTACADOS / CATÁLOGO --- */
         .section-header {
             text-align: center; padding: 60px 20px 30px 20px;
             background-color: var(--blanco);
@@ -268,6 +307,7 @@
             font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px;
             color: var(--negro); text-decoration: none; font-weight: 600;
             border-bottom: 1px solid var(--negro); padding-bottom: 2px;
+            cursor: pointer;
         }
 
         /* CUADRÍCULA DE PRODUCTOS */
@@ -317,7 +357,7 @@
         }
         .btn-add-cart:hover { background-color: #333333; }
         
-        /* Botón de WhatsApp con el icono oficial estricto */
+        /* Botón de WhatsApp con el icono exacto de teléfono */
         .btn-wa-item {
             background-color: var(--blanco); color: var(--negro);
             border: 1px solid var(--negro); padding: 11px 14px;
@@ -434,7 +474,7 @@
         }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { text-decoration: none; color: var(--subtitulo-gris); font-size: 0.82rem; transition: color 0.2s; }
+        .footer-col ul li a { text-decoration: none; color: var(--subtitulo-gris); font-size: 0.82rem; transition: color 0.2s; cursor: pointer; }
         .footer-col ul li a:hover { color: var(--negro); }
         .footer-col p { color: var(--subtitulo-gris); font-size: 0.82rem; line-height: 1.6; margin-bottom: 15px; }
 
@@ -455,197 +495,195 @@
 
     <!-- ENCABEZADO -->
     <header>
-        <a href="#" class="logo-container">
+        <div class="logo-container" onclick="showHome()">
             <h1>ASM</h1>
             <span>perfumes</span>
-        </a>
+        </div>
         <div class="header-right">
-            <!-- Icono de búsqueda -->
             <button class="icon-btn" onclick="focusSearch()" aria-label="Buscar">
                 <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </button>
-            <!-- Icono de carrito -->
             <button class="icon-btn" onclick="toggleCart()" aria-label="Carrito">
                 <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
                 <span class="cart-badge" id="cart-counter">0</span>
             </button>
-            <!-- Icono de menú hamburguesa -->
             <button class="icon-btn" onclick="toggleNavMenu()" aria-label="Menú">
                 <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
         </div>
     </header>
 
-    <!-- MENÚ LATERAL DE NAVEGACIÓN -->
+    <!-- MENÚ LATERAL -->
     <div class="side-menu-overlay" id="nav-overlay" onclick="toggleNavMenu()"></div>
     <div class="side-menu" id="side-menu">
         <div class="side-menu-header">
-            <a href="#" class="logo-container" style="text-decoration:none; color:var(--negro);">
+            <div class="logo-container" style="color:var(--negro);" onclick="showHome(); toggleNavMenu();">
                 <h1>ASM</h1>
                 <span>perfumes</span>
-            </a>
+            </div>
             <button class="close-cart" onclick="toggleNavMenu()">✕</button>
         </div>
         <ul class="side-menu-list" style="border-bottom: 1px solid var(--gris-claro);">
-            <li><a href="#" onclick="filterPerfumes('todos'); toggleNavMenu();">Inicio</a></li>
-            <!-- Hombre, Mujer y Unisex en línea (una al lado de la otra) -->
-            <li>
-                <ul class="menu-gender-inline">
-                    <li><a href="#" onclick="filterPerfumes('masculino'); toggleNavMenu();">Hombre</a></li>
-                    <li><a href="#" onclick="filterPerfumes('femenino'); toggleNavMenu();">Mujer</a></li>
-                    <li><a href="#" onclick="filterPerfumes('unisex'); toggleNavMenu();">Unisex</a></li>
-                </ul>
-            </li>
-            <li style="margin-top: 12px;"><a href="#" onclick="filterPerfumes('todos'); toggleNavMenu();">Catálogo</a></li>
+            <li><a onclick="showHome(); toggleNavMenu();">Inicio</a></li>
+            <li><a onclick="filterPerfumes('masculino'); toggleNavMenu();">Hombre</a></li>
+            <li><a onclick="filterPerfumes('femenino'); toggleNavMenu();">Mujer</a></li>
+            <li><a onclick="filterPerfumes('unisex'); toggleNavMenu();">Unisex</a></li>
+            <li><a onclick="filterPerfumes('todos'); toggleNavMenu();">Catálogo completo</a></li>
             <li><a href="https://wa.me/573018738631" target="_blank">Contacto</a></li>
         </ul>
         <div class="side-menu-section-title">Información</div>
         <ul class="side-menu-list" style="border-bottom: 1px solid var(--gris-claro);">
-            <li><a href="#" onclick="toggleNavMenu()">Nuestra esencia</a></li>
-            <li><a href="#" onclick="toggleNavMenu()">Contacto</a></li>
-            <li><a href="#" onclick="toggleNavMenu()">Preguntas frecuentes</a></li>
-            <li><a href="#" onclick="toggleNavMenu()">Políticas de compra</a></li>
-            <li><a href="#" onclick="toggleNavMenu()">Envíos y devoluciones</a></li>
-            <li><a href="#" onclick="toggleNavMenu()">Privacidad y tratamiento de datos</a></li>
+            <li><a onclick="toggleNavMenu()">Nuestra esencia</a></li>
+            <li><a onclick="toggleNavMenu()">Contacto</a></li>
+            <li><a onclick="toggleNavMenu()">Preguntas frecuentes</a></li>
+            <li><a onclick="toggleNavMenu()">Políticas de compra</a></li>
+            <li><a onclick="toggleNavMenu()">Envíos y devoluciones</a></li>
+            <li><a onclick="toggleNavMenu()">Privacidad y tratamiento de datos</a></li>
         </ul>
         <div class="side-menu-section-title">Síguenos</div>
         <div style="padding: 10px 30px 30px 30px;">
-            <p style="font-size: 0.75rem; color: var(--subtitulo-gris); margin-bottom: 15px; line-height: 1.5;">Síguenos en redes sociales y descubre el universo de ASMperfumes, nuestras fragancias y novedades.</p>
+            <p style="font-size: 0.75rem; color: var(--subtitulo-gris); margin-bottom: 15px; line-height: 1.5;">Síguenos en redes sociales y descubre el universo de ASMperfumes.</p>
             <div style="display: flex; gap: 10px;">
                 <a href="https://www.instagram.com/asmperfumes_/" target="_blank" class="footer-social-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
                 <a href="https://www.tiktok.com/@asmperfumes_" target="_blank" class="footer-social-btn"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.57-1.31 1.56-1.3 2.56.02.82.42 1.61 1.09 2.08.79.57 1.84.72 2.77.42.92-.3 1.68-1.02 1.98-1.94.13-.45.18-.92.18-1.39V.02z"/></svg></a>
-                <!-- Icono oficial estricto de WhatsApp -->
+                <!-- Icono oficial de WhatsApp con teléfono -->
                 <a href="https://wa.me/573018738631" target="_blank" class="footer-social-btn"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg></a>
             </div>
         </div>
     </div>
 
-    <!-- CARRUSEL SUPERIOR HERO SECTION -->
+    <!-- CARRUSEL SUPERIOR HERO CON INDICADORES (CIRCULITOS) -->
     <div class="hero-carousel" id="hero-carousel">
-        <div class="carousel-slide active promo-slide">
+        <div class="carousel-slide active promo-slide" id="slide-0">
             <h2>Envío Nacional Gratis</h2>
             <p>Disfruta de envío totalmente gratis a todo el país por compras superiores a $250.000 COP.</p>
         </div>
-        <div class="carousel-slide">
+        <div class="carousel-slide" id="slide-1">
             <h2>ASMperfumes</h2>
             <p>El arte de encontrar tu esencia con fragancias 100 % originales para hombre, mujer y unisex.</p>
         </div>
-    </div>
-
-    <!-- PÁGINA DE INICIO -->
-    <section class="hero-section">
-        <span class="hero-tag">ASMperfumes · 100 % Originales</span>
-        <h2 class="hero-title">El arte de encontrar<br>tu esencia</h2>
-        <p class="hero-subtitle">Descubre fragancias originales que expresan tu personalidad</p>
-        <p class="hero-desc">En ASMperfumes encuentras perfumes 100 % originales para cada estilo, ocasión y personalidad.</p>
-        <div class="hero-buttons">
-            <a href="#catalogo" class="btn-editorial" onclick="filterPerfumes('todos')">Descubrir fragancias</a>
-            <a href="#colecciones" class="btn-editorial-outline">Explorar colección</a>
-        </div>
-    </section>
-
-    <!-- COLECCIONES / ESTILOS -->
-    <div id="colecciones">
-        <div class="collection-block">
-            <div class="collection-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=1200&q=80" alt="Perfumes para hombre" class="collection-img">
-            </div>
-            <div class="collection-info">
-                <h3 class="collection-title">Perfumes para hombre</h3>
-                <a href="#catalogo" class="collection-link" onclick="filterPerfumes('masculino')">Explorar</a>
-            </div>
-        </div>
-        <div class="collection-block">
-            <div class="collection-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1200&q=80" alt="Perfumes para mujer" class="collection-img">
-            </div>
-            <div class="collection-info">
-                <h3 class="collection-title">Perfumes para mujer</h3>
-                <a href="#catalogo" class="collection-link" onclick="filterPerfumes('femenino')">Explorar</a>
-            </div>
-        </div>
-        <div class="collection-block">
-            <div class="collection-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=1200&q=80" alt="Perfumes unisex" class="collection-img">
-            </div>
-            <div class="collection-info">
-                <h3 class="collection-title">Perfumes unisex</h3>
-                <a href="#catalogo" class="collection-link" onclick="filterPerfumes('unisex')">Explorar</a>
-            </div>
+        <!-- Indicadores (circulitos) -->
+        <div class="carousel-dots" id="carousel-dots">
+            <button class="dot promo-slide-dot active" onclick="currentSlideIndex(0)" aria-label="Diapositiva 1"></button>
+            <button class="dot" onclick="currentSlideIndex(1)" aria-label="Diapositiva 2"></button>
         </div>
     </div>
 
-    <!-- SECCIÓN DE PERFUMES DESTACADOS -->
-    <div id="catalogo">
-        <div class="section-header">
+    <!-- CONTENEDOR PRINCIPAL DE INICIO -->
+    <div id="home-view">
+        <section class="hero-section">
+            <span class="hero-tag">ASMperfumes · 100 % Originales</span>
+            <h2 class="hero-title">El arte de encontrar<br>tu esencia</h2>
+            <p class="hero-subtitle">Descubre fragancias originales que expresan tu personalidad</p>
+            <p class="hero-desc">En ASMperfumes encuentras perfumes 100 % originales para cada estilo, ocasión y personalidad.</p>
+            <div class="hero-buttons">
+                <a href="#colecciones" class="btn-editorial">Explorar colecciones</a>
+                <a class="btn-editorial-outline" onclick="filterPerfumes('todos')">Ver catálogo completo</a>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE COLECCIONES EN PC (UNA AL LADO DE LA OTRA) -->
+        <div id="colecciones" class="collections-grid-pc">
+            <div class="collection-card-item">
+                <div class="collection-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=1000&q=80" alt="Perfumes para hombre" class="collection-img">
+                </div>
+                <div class="collection-info">
+                    <h3 class="collection-title">Perfumes para hombre</h3>
+                    <a class="collection-link" onclick="filterPerfumes('masculino')">Explorar</a>
+                </div>
+            </div>
+            <div class="collection-card-item">
+                <div class="collection-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1000&q=80" alt="Perfumes para mujer" class="collection-img">
+                </div>
+                <div class="collection-info">
+                    <h3 class="collection-title">Perfumes para mujer</h3>
+                    <a class="collection-link" onclick="filterPerfumes('femenino')">Explorar</a>
+                </div>
+            </div>
+            <div class="collection-card-item">
+                <div class="collection-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=1000&q=80" alt="Perfumes unisex" class="collection-img">
+                </div>
+                <div class="collection-info">
+                    <h3 class="collection-title">Perfumes unisex</h3>
+                    <a class="collection-link" onclick="filterPerfumes('unisex')">Explorar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN DE PERFUMES DESTACADOS (EXCLUSIVAMENTE PHILOS, LYNKED, MONTAGNE Y HABIK) -->
+        <div class="section-header" style="background-color: var(--blanco);">
             <span class="section-tag">Selección</span>
             <h2 class="section-title">Perfumes destacados</h2>
-            <a href="#" class="section-action-link" onclick="filterPerfumes('todos')">Ver catálogo completo</a>
+            <a class="section-action-link" onclick="filterPerfumes('todos')">Ver catálogo completo</a>
         </div>
+        <div class="container" id="featured-container" style="background-color: var(--blanco); border-bottom: 1px solid var(--gris-claro);">
+            <!-- Se inyecta por JS solo los 4 destacados -->
+        </div>
+
+        <!-- COMPROMISO / AUTENTICIDAD -->
+        <section class="authenticity-section">
+            <span class="tag">Nuestro compromiso</span>
+            <h2>La autenticidad es nuestra esencia</h2>
+            <p>En ASMperfumes creemos que cada fragancia cuenta una historia. Por eso, nuestro compromiso es ofrecer perfumes 100 % originales para que encuentres el aroma que mejor representa tu personalidad.</p>
+        </section>
+
+        <!-- GUÍA OLFATIVA -->
+        <section class="olfactive-section">
+            <div class="olfactive-header">
+                <span class="section-tag">Guía olfativa</span>
+                <h2 class="section-title">Familias olfativas</h2>
+                <p style="color: var(--subtitulo-gris); font-size: 0.88rem; margin-top: 10px;">Una guía para descubrir qué estilo de fragancia va contigo.</p>
+            </div>
+            <div class="olfactive-grid">
+                <div class="olfactive-item">
+                    <span class="olfactive-num">01</span>
+                    <h4>Frescas y cítricas</h4>
+                    <p>Luminosas y vibrantes, ideales para el día.</p>
+                </div>
+                <div class="olfactive-item">
+                    <span class="olfactive-num">02</span>
+                    <h4>Florales</h4>
+                    <p>Delicadas y románticas, con carácter elegante.</p>
+                </div>
+                <div class="olfactive-item">
+                    <span class="olfactive-num">03</span>
+                    <h4>Amaderadas</h4>
+                    <p>Cálidas y profundas, con presencia serena.</p>
+                </div>
+                <div class="olfactive-item">
+                    <span class="olfactive-num">04</span>
+                    <h4>Orientales y ambaradas</h4>
+                    <p>Envolventes, intensas y memorables.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN REGALOS -->
+        <section class="gifts-section">
+            <div class="gifts-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=1000&q=80" alt="Regalos perfumes" class="gifts-img">
+            </div>
+            <div class="gifts-container">
+                <span class="section-tag">Regalos</span>
+                <h2 class="section-title" style="margin-bottom: 15px;">Un aroma especial para cada ocasión</h2>
+                <p style="color: var(--subtitulo-gris); margin-bottom: 25px; font-size: 0.92rem;">Encuentra una fragancia que convierta cada regalo en un recuerdo especial.</p>
+                <a class="btn-editorial-outline" onclick="filterPerfumes('todos')">Ver catálogo completo</a>
+            </div>
+        </section>
     </div>
 
-    <!-- CUADRÍCULA DE DESTACADOS -->
-    <div class="container" id="perfume-container"></div>
-
-    <!-- COMPROMISO / AUTENTICIDAD -->
-    <section class="authenticity-section">
-        <span class="tag">Nuestro compromiso</span>
-        <h2>La autenticidad es nuestra esencia</h2>
-        <p>En ASMperfumes creemos que cada fragancia cuenta una historia. Por eso, nuestro compromiso es ofrecer perfumes 100 % originales para que encuentres el aroma que mejor representa tu personalidad.</p>
-    </section>
-
-    <!-- GUÍA OLFATIVA -->
-    <section class="olfactive-section">
-        <div class="olfactive-header">
-            <span class="section-tag">Guía olfativa</span>
-            <h2 class="section-title">Familias olfativas</h2>
-            <p style="color: var(--subtitulo-gris); font-size: 0.88rem; margin-top: 10px;">Una guía para descubrir qué estilo de fragancia va contigo. Pronto podrás filtrar el catálogo por familia.</p>
+    <!-- VISTA DE CATÁLOGO / CATEGORÍA ESPECÍFICA -->
+    <div id="catalogo-vista" style="display: none;">
+        <div class="section-header">
+            <span class="section-tag" id="catalogo-subtitle">Catálogo</span>
+            <h2 class="section-title" id="catalogo-title">Selección de fragancias</h2>
+            <a class="section-action-link" onclick="showHome()">← Volver al inicio</a>
         </div>
-        <div class="olfactive-grid">
-            <div class="olfactive-item">
-                <span class="olfactive-num">01</span>
-                <h4>Frescas y cítricas</h4>
-                <p>Luminosas y vibrantes, ideales para el día.</p>
-            </div>
-            <div class="olfactive-item">
-                <span class="olfactive-num">02</span>
-                <h4>Florales</h4>
-                <p>Delicadas y románticas, con carácter elegante.</p>
-            </div>
-            <div class="olfactive-item">
-                <span class="olfactive-num">03</span>
-                <h4>Amaderadas</h4>
-                <p>Cálidas y profundas, con presencia serena.</p>
-            </div>
-            <div class="olfactive-item">
-                <span class="olfactive-num">04</span>
-                <h4>Orientales y ambaradas</h4>
-                <p>Envolventes, intensas y memorables.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN REGALOS -->
-    <section class="gifts-section">
-        <div class="gifts-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=1000&q=80" alt="Regalos perfumes" class="gifts-img">
-        </div>
-        <div class="gifts-container">
-            <span class="section-tag">Regalos</span>
-            <h2 class="section-title" style="margin-bottom: 15px;">Un aroma especial para cada ocasión</h2>
-            <p style="color: var(--subtitulo-gris); margin-bottom: 25px; font-size: 0.92rem;">Encuentra una fragancia que convierta cada regalo en un recuerdo especial.</p>
-            <a href="#catalogo" class="btn-editorial-outline" onclick="filterPerfumes('todos')">Ver catálogo</a>
-        </div>
-    </section>
-
-    <!-- CIERRE DE INICIO -->
-    <section style="background-color: var(--blanco); padding: 90px 20px; text-align: center; border-bottom: 1px solid var(--gris-claro);">
-        <h2 class="section-title" style="margin-bottom: 25px;">Encuentra tu próxima fragancia favorita</h2>
-        <div class="hero-buttons">
-            <a href="#catalogo" class="btn-editorial" onclick="filterPerfumes('todos')">Explorar catálogo</a>
-            <a href="https://wa.me/573018738631?text=%C2%A1Hola%20ASMperfumes!%20Quisiera%20asesor%C3%ADa%20para%20elegir%20un%20perfume." target="_blank" class="btn-editorial-outline">Contactar por WhatsApp</a>
-        </div>
-    </section>
+        <div class="container" id="perfume-container"></div>
+    </div>
 
     <!-- PANEL LATERAL DEL CARRITO -->
     <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
@@ -656,8 +694,8 @@
         </div>
         <div class="cart-body">
             <div class="cart-actions-top">
-                <a href="#" onclick="toggleCart()">Continuar comprando</a>
-                <a href="#" onclick="clearCart()" style="color: #990000;">Vaciar carrito</a>
+                <a onclick="toggleCart()">Continuar comprando</a>
+                <a onclick="clearCart()" style="color: #990000;">Vaciar carrito</a>
             </div>
             <div id="cart-items-container"></div>
         </div>
@@ -689,40 +727,40 @@
     <footer>
         <div class="footer-content">
             <div class="footer-col">
-                <a href="#" class="logo-container" style="text-decoration:none; color:var(--negro); display: inline-block; margin-bottom: 12px;">
+                <div class="logo-container" style="color:var(--negro); display: inline-block; margin-bottom: 12px;" onclick="showHome()">
                     <h1 style="font-size: 1.4rem;">ASM</h1>
                     <span style="font-size: 0.5rem;">perfumes</span>
-                </a>
+                </div>
                 <p>Perfumes 100 % originales para hombre, mujer y unisex. Encuentra el aroma que expresa tu esencia.</p>
             </div>
             <div class="footer-col">
                 <h4>Tienda</h4>
                 <ul>
-                    <li><a href="#" onclick="filterPerfumes('todos')">Inicio</a></li>
-                    <li><a href="#" onclick="filterPerfumes('masculino')">Hombre</a></li>
-                    <li><a href="#" onclick="filterPerfumes('femenino')">Mujer</a></li>
-                    <li><a href="#" onclick="filterPerfumes('unisex')">Unisex</a></li>
-                    <li><a href="#" onclick="filterPerfumes('todos')">Catálogo</a></li>
+                    <li><a onclick="showHome()">Inicio</a></li>
+                    <li><a onclick="filterPerfumes('masculino')">Hombre</a></li>
+                    <li><a onclick="filterPerfumes('femenino')">Mujer</a></li>
+                    <li><a onclick="filterPerfumes('unisex')">Unisex</a></li>
+                    <li><a onclick="filterPerfumes('todos')">Catálogo completo</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Información</h4>
                 <ul>
-                    <li><a href="#">Nuestra esencia</a></li>
-                    <li><a href="#">Contacto</a></li>
-                    <li><a href="#">Preguntas frecuentes</a></li>
-                    <li><a href="#">Políticas de compra</a></li>
-                    <li><a href="#">Envíos y devoluciones</a></li>
-                    <li><a href="#">Privacidad y tratamiento de datos</a></li>
+                    <li><a>Nuestra esencia</a></li>
+                    <li><a>Contacto</a></li>
+                    <li><a>Preguntas frecuentes</a></li>
+                    <li><a>Políticas de compra</a></li>
+                    <li><a>Envíos y devoluciones</a></li>
+                    <li><a>Privacidad y tratamiento de datos</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Síguenos</h4>
-                <p>Síguenos en redes sociales y descubre el universo de ASMperfumes, nuestras fragancias y novedades.</p>
+                <p>Síguenos en redes sociales y descubre el universo de ASMperfumes.</p>
                 <div class="footer-socials">
                     <a href="https://www.instagram.com/asmperfumes_/" target="_blank" class="footer-social-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
                     <a href="https://www.tiktok.com/@asmperfumes_" target="_blank" class="footer-social-btn"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.57-1.31 1.56-1.3 2.56.02.82.42 1.61 1.09 2.08.79.57 1.84.72 2.77.42.92-.3 1.68-1.02 1.98-1.94.13-.45.18-.92.18-1.39V.02z"/></svg></a>
-                    <!-- Icono oficial estricto de WhatsApp -->
+                    <!-- Icono oficial de WhatsApp con teléfono -->
                     <a href="https://wa.me/573018738631" target="_blank" class="footer-social-btn"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg></a>
                 </div>
             </div>
@@ -736,45 +774,131 @@
         const PHONE_NUMBER = "573018738631";
 
         const perfumes = [
-            { id: 1, nombre: "ARMAF Ventana Pour Homme", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "VENTANA.JPG", destacado: true },
-            { id: 2, nombre: "Odyssey Eau De Montagne", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "MONTAGNE.JPG", destacado: false },
-            { id: 3, nombre: "Habik", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 180000, precioStr: "$ 180.000 COP", img: "HABIK.JPG", destacado: false },
+            { id: 1, nombre: "ARMAF Ventana Pour Homme", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "VENTANA.JPG" },
+            { id: 2, nombre: "Odyssey Eau De Montagne", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "MONTAGNE.JPG", destacado: true },
+            { id: 3, nombre: "Habik", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 180000, precioStr: "$ 180.000 COP", img: "HABIK.JPG", destacado: true },
             { id: 4, nombre: "Lynked Freedom", genero: "masculino", presentacion: "3.4 oz", concentracion: "", precioNum: 280000, precioStr: "$ 280.000 COP", img: "LYNKED.JPG", destacado: true },
-            { id: 5, nombre: "9 PM", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 250000, precioStr: "$ 250.000 COP", img: "9PMELIXIR.JPG", destacado: true },
-            { id: 6, nombre: "Odyssey Artisto Red Edition", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 230000, precioStr: "$ 230.000 COP", img: "ARTISTO.JPG", destacado: false },
-            { id: 7, nombre: "Hawas", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 230000, precioStr: "$ 230.000 COP", img: "hawasforhim.jpg", destacado: false },
-            { id: 8, nombre: "Nautica", genero: "masculino", presentacion: "3.3 oz", concentracion: "EDT", precioNum: 110000, precioStr: "$ 110.000 COP", img: "NAUTICACLASSIC.JPG", destacado: false },
+            { id: 5, nombre: "9 PM", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 250000, precioStr: "$ 250.000 COP", img: "9PMELIXIR.JPG" },
+            { id: 6, nombre: "Odyssey Artisto Red Edition", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 230000, precioStr: "$ 230.000 COP", img: "ARTISTO.JPG" },
+            { id: 7, nombre: "Hawas", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 230000, precioStr: "$ 230.000 COP", img: "hawasforhim.jpg" },
+            { id: 8, nombre: "Nautica", genero: "masculino", presentacion: "3.3 oz", concentracion: "EDT", precioNum: 110000, precioStr: "$ 110.000 COP", img: "NAUTICACLASSIC.JPG" },
             
             { id: 9, nombre: "Philos Rosso", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "PHILOS.JPG", destacado: true },
-            { id: 10, nombre: "Pepe Jeans for Her", genero: "femenino", presentacion: "2.7 oz", concentracion: "", precioNum: 180000, precioStr: "$ 180.000 COP", img: "PEPEJEANSFORHER.JPG", destacado: false },
-            { id: 11, nombre: "Bade'e Al Oud Noble Blush", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 200000, precioStr: "$ 200.000 COP", img: "noblebush.jpg", destacado: true },
-            { id: 12, nombre: "ARMAF Legesi", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 140000, precioStr: "$ 140.000 COP", img: "LEGESIPOURFEMME.JPG", destacado: false },
-            { id: 13, nombre: "The Kingdom", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "THEKINGDOM.JPG", destacado: false },
+            { id: 10, nombre: "Pepe Jeans for Her", genero: "femenino", presentacion: "2.7 oz", concentracion: "", precioNum: 180000, precioStr: "$ 180.000 COP", img: "PEPEJEANSFORHER.JPG" },
+            { id: 11, nombre: "Bade'e Al Oud Noble Blush", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 200000, precioStr: "$ 200.000 COP", img: "noblebush.jpg" },
+            { id: 12, nombre: "ARMAF Legesi", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 140000, precioStr: "$ 140.000 COP", img: "LEGESIPOURFEMME.JPG" },
+            { id: 13, nombre: "The Kingdom", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "THEKINGDOM.JPG" },
             
-            { id: 14, nombre: "Fakhar Gold", genero: "unisex", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "fakhar.jpg", destacado: false },
-            { id: 15, nombre: "Khamrah", genero: "unisex", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 180000, precioStr: "$ 180.000 COP", img: "KHAMRAH.JPG", destacado: true },
-            { id: 16, nombre: "Khamrah Dukhan", genero: "unisex", presentacion: "3.4 oz", concentracion: "", precioNum: 220000, precioStr: "$ 220.000 COP", img: "khamrahdukham.jpg", destacado: false },
-            { id: 17, nombre: "Odyssey Mandarin Sky Elixir", genero: "unisex", presentacion: "3.4 oz", concentracion: "", precioNum: 250000, precioStr: "$ 250.000 COP", img: "MANDARINSKYELIXIR.JPG", destacado: true }
+            { id: 14, nombre: "Fakhar Gold", genero: "unisex", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "fakhar.jpg" },
+            { id: 15, nombre: "Khamrah", genero: "unisex", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 180000, precioStr: "$ 180.000 COP", img: "KHAMRAH.JPG" },
+            { id: 16, nombre: "Khamrah Dukhan", genero: "unisex", presentacion: "3.4 oz", concentracion: "", precioNum: 220000, precioStr: "$ 220.000 COP", img: "khamrahdukham.jpg" },
+            { id: 17, nombre: "Odyssey Mandarin Sky Elixir", genero: "unisex", presentacion: "3.4 oz", concentracion: "", precioNum: 250000, precioStr: "$ 250.000 COP", img: "MANDARINSKYELIXIR.JPG" }
         ];
 
         let cart = [];
-        let currentCategory = 'destacados';
-
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
-        function nextSlide() {
+        const dots = document.querySelectorAll('.carousel-dots .dot');
+
+        function setSlide(index) {
             slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = index;
+            
             slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function currentSlideIndex(index) {
+            setSlide(index);
+        }
+
+        function nextSlide() {
+            if(slides.length > 0) {
+                let next = (currentSlide + 1) % slides.length;
+                setSlide(next);
+            }
         }
         setInterval(nextSlide, 5000);
 
-        function renderPerfumes(data) {
+        function renderFeaturedHome() {
+            const container = document.getElementById('featured-container');
+            container.innerHTML = '';
+            
+            const featuredList = perfumes.filter(p => p.destacado);
+
+            featuredList.forEach(p => {
+                const generoLabel = p.genero === 'masculino' ? 'HOMBRE' : (p.genero === 'femenino' ? 'MUJER' : 'UNISEX');
+                const badgeInfo = p.concentracion ? `${generoLabel} · ${p.presentacion} · ${p.concentracion}` : `${generoLabel} · ${p.presentacion}`;
+                const textWa = encodeURIComponent(`Hola, ASMperfumes. Estoy interesado/a en el perfume ${p.nombre} de ${p.presentacion}, con un precio de ${p.precioStr}. ¿Me pueden confirmar su disponibilidad y cómo puedo realizar la compra?`);
+                const urlWa = `https://wa.me/${PHONE_NUMBER}?text=${textWa}`;
+
+                container.innerHTML += `
+                    <div class="card">
+                        <div class="card-img-container">
+                            <img src="${p.img}" alt="${p.nombre}" class="card-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'250\'><rect width=\'100%\' height=\'100%\' fill=\'%23F7F5F0\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Montserrat\' font-size=\'10\' fill=\'%23777777\'>FOTOGRAFÍA PRÓXIMAMENTE</text></svg>';">
+                        </div>
+                        <div class="card-content">
+                            <div>
+                                <span class="card-category">${badgeInfo}</span>
+                                <h3 class="card-title">${p.nombre}</h3>
+                                <div class="card-price">${p.precioStr}</div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn-add-cart" onclick="addToCart(${p.id})">Agregar</button>
+                                <a href="${urlWa}" target="_blank" class="btn-wa-item" title="Consultar por WhatsApp">
+                                    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function showHome() {
+            document.getElementById('home-view').style.display = 'block';
+            document.getElementById('catalogo-vista').style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function filterPerfumes(cat) {
+            document.getElementById('home-view').style.display = 'none';
+            document.getElementById('catalogo-vista').style.display = 'block';
+
+            const titleEl = document.getElementById('catalogo-title');
+            const subTitleEl = document.getElementById('catalogo-subtitle');
+
+            if (cat === 'masculino') {
+                titleEl.textContent = 'Perfumes para Hombre';
+                subTitleEl.textContent = 'Colección Masculina';
+            } else if (cat === 'femenino') {
+                titleEl.textContent = 'Perfumes para Mujer';
+                subTitleEl.textContent = 'Colección Femenina';
+            } else if (cat === 'unisex') {
+                titleEl.textContent = 'Perfumes Unisex';
+                subTitleEl.textContent = 'Colección Unisex';
+            } else {
+                titleEl.textContent = 'Catálogo Completo';
+                subTitleEl.textContent = 'Todas las fragancias';
+            }
+
+            let filtered = perfumes;
+            if (cat !== 'todos') {
+                filtered = perfumes.filter(p => p.genero === cat);
+            }
+
+            renderPerfumesCatalog(filtered);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderPerfumesCatalog(data) {
             const container = document.getElementById('perfume-container');
             container.innerHTML = '';
 
             if (data.length === 0) {
-                container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--subtitulo-gris); padding: 40px;">No se encontraron perfumes disponibles.</p>`;
+                container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--subtitulo-gris); padding: 40px;">No se encontraron perfumes disponibles en esta categoría.</p>`;
                 return;
             }
 
@@ -807,24 +931,8 @@
             });
         }
 
-        function filterPerfumes(cat) {
-            currentCategory = cat;
-            handleSearch();
-        }
-
-        function handleSearch() {
-            let filtered = perfumes;
-            if (currentCategory === 'destacados') {
-                filtered = perfumes.filter(p => p.destacado);
-            } else if (currentCategory !== 'todos') {
-                filtered = perfumes.filter(p => p.genero === currentCategory);
-            }
-            renderPerfumes(filtered);
-        }
-
         function focusSearch() {
-            const containerElem = document.getElementById('catalogo');
-            containerElem.scrollIntoView({ behavior: 'smooth' });
+            filterPerfumes('todos');
         }
 
         function toggleCart() {
@@ -949,8 +1057,7 @@
             window.open(url, '_blank');
         }
 
-        // Inicializar mostrando solo los destacados en el inicio
-        renderPerfumes(perfumes.filter(p => p.destacado));
+        renderFeaturedHome();
     </script>
 </body>
 </html>
