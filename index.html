@@ -416,7 +416,7 @@ text-transform: uppercase;
 letter-spacing: 1px;
 }
 
-/* CUADRÍCULA DE PRODUCTOS (IMAGEN AL 100% DE COBERTURA) */
+/* CUADRÍCULA DE PRODUCTOS */
 .container {
 max-width: 1300px; margin: 0 auto; padding: 30px 20px;
 display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -426,6 +426,7 @@ gap: 30px;
 background: var(--blanco); border: 1px solid var(--gris-claro);
 display: flex; flex-direction: column; justify-content: space-between;
 transition: box-shadow 0.3s ease;
+position: relative;
 }
 .card-img-container {
 position: relative; width: 100%; height: 320px;
@@ -438,6 +439,25 @@ width: 100%; height: 100%; object-fit: cover; object-position: center;
 transition: transform 0.4s ease;
 }
 .card-img-container:hover .card-img { transform: scale(1.05); }
+
+/* ESTILOS DE PRODUCTO AGOTADO */
+.card.is-sold-out .card-img { opacity: 0.55; filter: grayscale(40%); }
+.card.is-sold-out .card-title {
+text-decoration: line-through;
+color: var(--subtitulo-gris);
+}
+.sold-out-badge {
+display: inline-block;
+background: #990000;
+color: #FFFFFF;
+font-size: 0.58rem;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+padding: 3px 8px;
+margin-bottom: 6px;
+}
+
 .card-content {
 padding: 20px; text-align: center; flex-grow: 1;
 display: flex; flex-direction: column; justify-content: space-between;
@@ -464,8 +484,12 @@ text-transform: uppercase; letter-spacing: 1px; cursor: pointer;
 font-weight: 600; transition: background 0.2s;
 }
 .btn-add-cart:hover { background-color: #333333; }
+.btn-add-cart:disabled {
+background-color: var(--gris-claro);
+color: var(--subtitulo-gris);
+cursor: not-allowed;
+}
 
-/* Icono oficial exacto de WhatsApp en tarjetas */
 .btn-wa-item {
 background-color: var(--blanco); color: var(--negro);
 border: 1px solid var(--negro); padding: 11px 14px;
@@ -475,7 +499,7 @@ transition: all 0.2s; text-decoration: none;
 .btn-wa-item:hover { background-color: var(--negro); color: var(--blanco); }
 .btn-wa-item svg { fill: currentColor; width: 16px; height: 16px; }
 
-/* --- VISTA DETALLE DE PRODUCTO (CON NOTAS FRAGRANTICA) --- */
+/* --- VISTA DETALLE DE PRODUCTO --- */
 #detalle-vista {
 background-color: var(--blanco);
 max-width: 900px;
@@ -544,7 +568,6 @@ color: var(--negro);
 font-weight: 600;
 text-transform: uppercase;
 }
-/* Bloque de Notas Olfativas Fragrantica */
 .fragrantica-notes-box {
 background: var(--marfil);
 padding: 18px;
@@ -588,6 +611,11 @@ text-transform: uppercase; letter-spacing: 2px; cursor: pointer; margin-bottom: 
 transition: background 0.2s;
 }
 .btn-detalle-agregar:hover { background: #333333; }
+.btn-detalle-agregar:disabled {
+background: var(--gris-claro);
+color: var(--subtitulo-gris);
+cursor: not-allowed;
+}
 .btn-detalle-wa {
 display: flex; align-items: center; justify-content: center; gap: 10px;
 width: 100%; background: var(--blanco); color: var(--negro);
@@ -599,6 +627,35 @@ transition: all 0.2s;
 .btn-detalle-wa svg { width: 16px; height: 16px; fill: currentColor; }
 .detalle-footer-note {
 font-size: 0.7rem; color: var(--subtitulo-gris); text-align: center; margin-top: 15px;
+}
+
+/* --- VISTA SECCIONES INFORMATIVAS (MODAL / PÁGINA) --- */
+#info-vista {
+background-color: var(--blanco);
+max-width: 850px;
+margin: 40px auto;
+padding: 50px 40px;
+border: 1px solid var(--gris-claro);
+}
+#info-vista h2 {
+font-family: 'Playfair Display', serif;
+font-size: 2.2rem;
+font-weight: 400;
+margin-bottom: 20px;
+border-bottom: 1px solid var(--gris-claro);
+padding-bottom: 15px;
+}
+.info-body-content {
+font-size: 0.9rem;
+color: var(--subtitulo-gris);
+line-height: 1.8;
+}
+.info-body-content p { margin-bottom: 18px; }
+.info-body-content h3 {
+font-family: 'Playfair Display', serif;
+color: var(--negro);
+font-size: 1.2rem;
+margin: 25px 0 10px 0;
 }
 
 /* --- SECCIONES EDITORIALES --- */
@@ -771,16 +828,16 @@ text-align: center; border-top: 1px solid var(--gris-claro); padding-top: 30px; 
 <li><a onclick="filterPerfumes('femenino'); toggleNavMenu();">Mujer</a></li>
 <li><a onclick="filterPerfumes('unisex'); toggleNavMenu();">Unisex</a></li>
 <li><a onclick="filterPerfumes('todos'); toggleNavMenu();">Catálogo completo</a></li>
-<li><a href="https://wa.me/573018738631" target="_blank">Contacto</a></li>
+<li><a onclick="openInfoPage('contacto'); toggleNavMenu();">Contacto</a></li>
 </ul>
 <div class="side-menu-section-title">Información</div>
 <ul class="side-menu-list" style="border-bottom: 1px solid var(--gris-claro);">
-<li><a onclick="toggleNavMenu()">Nuestra esencia</a></li>
-<li><a onclick="toggleNavMenu()">Contacto</a></li>
-<li><a onclick="toggleNavMenu()">Preguntas frecuentes</a></li>
-<li><a onclick="toggleNavMenu()">Políticas de compra</a></li>
-<li><a onclick="toggleNavMenu()">Envíos y devoluciones</a></li>
-<li><a onclick="toggleNavMenu()">Privacidad y tratamiento de datos</a></li>
+<li><a onclick="openInfoPage('esencia'); toggleNavMenu();">Nuestra esencia</a></li>
+<li><a onclick="openInfoPage('contacto'); toggleNavMenu();">Contacto</a></li>
+<li><a onclick="openInfoPage('faq'); toggleNavMenu();">Preguntas frecuentes</a></li>
+<li><a onclick="openInfoPage('politicas'); toggleNavMenu();">Políticas de compra</a></li>
+<li><a onclick="openInfoPage('envios'); toggleNavMenu();">Envíos y devoluciones</a></li>
+<li><a onclick="openInfoPage('privacidad'); toggleNavMenu();">Privacidad y tratamiento de datos</a></li>
 </ul>
 <div class="side-menu-section-title">Síguenos</div>
 <div style="padding: 10px 30px 30px 30px;">
@@ -804,7 +861,7 @@ text-align: center; border-top: 1px solid var(--gris-claro); padding-top: 30px; 
 <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
 </a>
 
-<!-- CARRUSEL SUPERIOR HERO -->
+<!-- CARRUSEL SUPERIOR HERO (SOLO EN INICIO) -->
 <div class="hero-carousel" id="hero-carousel">
 <div class="carousel-slide active promo-slide" id="slide-0">
 <h2>Envío Nacional Gratis</h2>
@@ -945,6 +1002,15 @@ text-align: center; border-top: 1px solid var(--gris-claro); padding-top: 30px; 
 <div class="detalle-grid" id="detalle-content-container"></div>
 </div>
 
+<!-- VISTA DE INFORMACIÓN / POLÍTICAS / CONTACTO -->
+<div id="info-vista" style="display: none;">
+<div style="margin-bottom: 25px;">
+<a class="section-action-link" onclick="showHome()">← Volver al inicio</a>
+</div>
+<h2 id="info-title">Título de Información</h2>
+<div class="info-body-content" id="info-content"></div>
+</div>
+
 <!-- PANEL LATERAL DEL CARRITO -->
 <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
 <div class="cart-drawer" id="cart-drawer">
@@ -997,12 +1063,12 @@ text-align: center; border-top: 1px solid var(--gris-claro); padding-top: 30px; 
 <div class="footer-col">
 <h4>Información</h4>
 <ul>
-<li><a>Nuestra esencia</a></li>
-<li><a>Contacto</a></li>
-<li><a>Preguntas frecuentes</a></li>
-<li><a>Políticas de compra</a></li>
-<li><a>Envíos y devoluciones</a></li>
-<li><a>Privacidad y tratamiento de datos</a></li>
+<li><a onclick="openInfoPage('esencia')">Nuestra esencia</a></li>
+<li><a onclick="openInfoPage('contacto')">Contacto</a></li>
+<li><a onclick="openInfoPage('faq')">Preguntas frecuentes</a></li>
+<li><a onclick="openInfoPage('politicas')">Políticas de compra</a></li>
+<li><a onclick="openInfoPage('envios')">Envíos y devoluciones</a></li>
+<li><a onclick="openInfoPage('privacidad')">Privacidad y tratamiento de datos</a></li>
 </ul>
 </div>
 <div class="footer-col">
@@ -1014,7 +1080,6 @@ text-align: center; border-top: 1px solid var(--gris-claro); padding-top: 30px; 
 <a href="https://wa.me/573018738631" target="_blank" class="footer-social-btn"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg></a>
 </div>
 </div>
-</div>
 <div class="footer-bottom">
 ©️ 2026 ASMperfumes. Todos los derechos reservados.
 </div>
@@ -1023,73 +1088,74 @@ text-align: center; border-top: 1px solid var(--gris-claro); padding-top: 30px; 
 <script>
 const PHONE_NUMBER = "573018738631";
 
+/* --- PROPIEDAD 'agotado: true / false' AÑADIDA EN CADA PRODUCTO --- */
 const perfumes = [
 {
-id: 1, nombre: "ARMAF Ventana Pour Homme", marca: "Armaf", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "VENTANA.JPG",
+id: 1, nombre: "ARMAF Ventana Pour Homme", marca: "Armaf", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "VENTANA.JPG", agotado: false,
 salida: "Toronja, bergamota y limón.", corazon: "Lavanda, pachulí, geranio y pimienta.", fondo: "Cedro, vetiver, ámbar y maderas nobles."
 },
 {
-id: 2, nombre: "Odyssey Eau De Montagne", marca: "Lattafa", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "ODISSEYMONTAGNE.JPG", destacado: true,
+id: 2, nombre: "Odyssey Eau De Montagne", marca: "Lattafa", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "ODISSEYMONTAGNE.JPG", destacado: true, agotado: false,
 salida: "Notas alpinas, mandarina y bergamota.", corazon: "Grosellas negras, té verde y notas acuáticas.", fondo: "Almizcle blanco, sándalo, petitgrain y gálbano."
 },
 {
-id: 3, nombre: "Habik", marca: "Lattafa", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 180000, precioStr: "$ 180.000 COP", img: "HABIK.JPG", destacado: true,
+id: 3, nombre: "Habik", marca: "Lattafa", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 180000, precioStr: "$ 180.000 COP", img: "HABIK.JPG", destacado: true, agotado: false,
 salida: "Especias frescas, bergamota y lavanda.", corazon: "Notas amaderadas, flor de azahar y cedro.", fondo: "Ámbar, haba tonka y almizcle."
 },
 {
-id: 4, nombre: "Lynked Freedom", marca: "Afnan", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 280000, precioStr: "$ 280.000 COP", img: "LYNKED.JPG", destacado: true,
+id: 4, nombre: "Lynked Freedom", marca: "Afnan", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 280000, precioStr: "$ 280.000 COP", img: "LYNKED.JPG", destacado: true, agotado: false,
 salida: "Notas cítricas chispeantes y manzana verde.", corazon: "Lavanda, notas aromáticas y especias.", fondo: "Ámbar gris, maderas secas y almizcle."
 },
 {
-id: 5, nombre: "9 PM", marca: "Afnan", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 250000, precioStr: "$ 250.000 COP", img: "9PMELIXIR.JPG",
+id: 5, nombre: "9 PM", marca: "Afnan", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 250000, precioStr: "$ 250.000 COP", img: "9PMELIXIR.JPG", agotado: false,
 salida: "Canela, manzana y lavanda.", corazon: "Flor de azahar del naranjo y lirio de los valles.", fondo: "Vainilla, haba tonka, ámbar y pachulí."
 },
 {
-id: 6, nombre: "Odyssey Artisto Red Edition", marca: "Lattafa", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 230000, precioStr: "$ 230.000 COP", img: "ARTISTO.JPG",
+id: 6, nombre: "Odyssey Artisto Red Edition", marca: "Lattafa", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 230000, precioStr: "$ 230.000 COP", img: "ARTISTO.JPG", agotado: false,
 salida: "Bergamota, pimienta rosa y notas frutales.", corazon: "Lavanda, geranio y notas especiadas.", fondo: "Cedro, pachulí, ámbar y vetiver."
 },
 {
-id: 7, nombre: "Hawas", marca: "Rasasi", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 230000, precioStr: "$ 230.000 COP", img: "HAWASFORHIM.JPG",
+id: 7, nombre: "Hawas", marca: "Rasasi", genero: "masculino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 230000, precioStr: "$ 230.000 COP", img: "HAWASFORHIM.JPG", agotado: false,
 salida: "Manzana, bergamota, canela y limón.", corazon: "Notas acuáticas, ciruela, flor de azahar y cardamomo.", fondo: "Ámbar gris, almizcle, pachulí y trozos de madera flotante."
 },
 {
-id: 8, nombre: "Nautica", marca: "Nautica", genero: "masculino", presentacion: "3.3 oz", concentracion: "EDT", precioNum: 110000, precioStr: "$ 110.000 COP", img: "NAUTICACLASSIC.JPG",
+id: 8, nombre: "Nautica", marca: "Nautica", genero: "masculino", presentacion: "3.3 oz", concentracion: "EDT", precioNum: 110000, precioStr: "$ 110.000 COP", img: "NAUTICACLASSIC.JPG", agotado: false,
 salida: "Aldehídos, lima, cilantro y notas verdes.", corazon: "Ciclamen, jazmín, rosa y geranio.", fondo: "Sándalo, ámbar, pachulí, musgo de roble y cedro."
 },
 {
-id: 9, nombre: "Philos Rosso", marca: "Maison Alhambra", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "PHILOS.JPG", destacado: true,
+id: 9, nombre: "Philos Rosso", marca: "Maison Alhambra", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "PHILOS.JPG", destacado: true, agotado: false,
 salida: "Rosa, notas afrutadas y especias.", corazon: "Pachulí, cedro y notas amaderadas.", fondo: "Ámbar, almizcle y vainilla dulce."
 },
 {
-id: 10, nombre: "Pepe Jeans for Her", marca: "Pepe Jeans", genero: "femenino", presentacion: "2.7 oz", concentracion: "EDP", precioNum: 180000, precioStr: "$ 180.000 COP", img: "LIVEISNOWPEPEJEANS.JPG",
+id: 10, nombre: "Pepe Jeans for Her", marca: "Pepe Jeans", genero: "femenino", presentacion: "2.7 oz", concentracion: "EDP", precioNum: 180000, precioStr: "$ 180.000 COP", img: "LIVEISNOWPEPEJEANS.JPG", agotado: false,
 salida: "Almendra, malvavisco (bombón) y mandarina.", corazon: "Vainilla, leche de almendras y vodka.", fondo: "Ámbar, almizcle y pachulí."
 },
 {
-id: 11, nombre: "Bade'e Al Oud Noble Blush", marca: "Lattafa", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 200000, precioStr: "$ 200.000 COP", img: "NOBLEBLUSH.JPG",
+id: 11, nombre: "Bade'e Al Oud Noble Blush", marca: "Lattafa", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 200000, precioStr: "$ 200.000 COP", img: "NOBLEBLUSH.JPG", agotado: false,
 salida: "Frutas jugosas, rosa y acordes florales.", corazon: "Oud suave, almizcle blanco y jazmín.", fondo: "Vainilla, ámbar y maderas preciosas."
 },
 {
-id: 12, nombre: "ARMAF Legesi", marca: "Armaf", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 140000, precioStr: "$ 140.000 COP", img: "LEGESI.JPG",
+id: 12, nombre: "ARMAF Legesi", marca: "Armaf", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 140000, precioStr: "$ 140.000 COP", img: "LEGESI.JPG", agotado: false,
 salida: "Notas verdes, lavanda y bergamota.", corazon: "Jazmín, cedro y lirio de los valles.", fondo: "Sándalo, almizcle, haba tonka y cuero."
 },
 {
-id: 13, nombre: "The Kingdom", marca: "Lattafa", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "THEKINGDOM.JPG",
+id: 13, nombre: "The Kingdom", marca: "Lattafa", genero: "femenino", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "THEKINGDOM.JPG", agotado: false,
 salida: "Bergamota, pimienta rosa y notas florales.", corazon: "Rosa turca, jazmín y pachulí.", fondo: "Ámbar, vainilla y almizcle blanco."
 },
 {
-id: 14, nombre: "Fakhar Gold", marca: "Lattafa", genero: "unisex", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "FAKHARGOLD.JPG",
+id: 14, nombre: "Fakhar Gold", marca: "Lattafa", genero: "unisex", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 190000, precioStr: "$ 190.000 COP", img: "FAKHARGOLD.JPG", agotado: false,
 salida: "Nardos, ylang-ylang y bergamota.", corazon: "Nardos, jazmín y notas solares.", fondo: "Ámbar, almizcle, pachulí y cedro."
 },
 {
-id: 15, nombre: "Khamrah", marca: "Lattafa", genero: "unisex", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 180000, precioStr: "$ 180.000 COP", img: "KHAMRAH.JPG",
+id: 15, nombre: "Khamrah", marca: "Lattafa", genero: "unisex", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 180000, precioStr: "$ 180.000 COP", img: "KHAMRAH.JPG", agotado: false,
 salida: "Canela, nuez moscada y bergamota.", corazon: "Dátiles, praliné, nardos y mahonial.", fondo: "Vainilla, haba tonka, mirra, benjuí, madera de ámbar y akigalawood."
 },
 {
-id: 16, nombre: "Khamrah Dukhan", marca: "Lattafa", genero: "unisex", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 220000, precioStr: "$ 220.000 COP", img: "DUKHAM.JPG",
+id: 16, nombre: "Khamrah Dukhan", marca: "Lattafa", genero: "unisex", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 220000, precioStr: "$ 220.000 COP", img: "DUKHAM.JPG", agotado: false,
 salida: "Incienso, especias cálidas y canela.", corazon: "Dátiles dulces, maderas ahumadas y cuero.", fondo: "Vainilla, ámbar oscuro y resinas orientales."
 },
 {
-id: 17, nombre: "Odyssey Mandarin Sky Elixir", marca: "Lattafa", genero: "unisex", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 250000, precioStr: "$ 250.000 COP", img: "MANDARINELIXIR.JPG",
+id: 17, nombre: "Odyssey Mandarin Sky Elixir", marca: "Lattafa", genero: "unisex", presentacion: "3.4 oz", concentracion: "EDP", precioNum: 250000, precioStr: "$ 250.000 COP", img: "MANDARINELIXIR.JPG", agotado: false,
 salida: "Mandarina jugosa, naranja y notas cítricas vibrantes.", corazon: "Caramelo, notas florales y especias dulces.", fondo: "Ámbar, vainilla, sándalo y almizcle."
 }
 ];
@@ -1131,30 +1197,32 @@ currentSearchQuery = e.target.value.toLowerCase().trim();
 filterPerfumes('todos');
 }
 
-function renderFeaturedHome() {
-const container = document.getElementById('featured-container');
-container.innerHTML = '';
-const featuredList = perfumes.filter(p => p.destacado);
-
-featuredList.forEach(p => {
+/* AUXILIAR PARA RENDERIZAR TARJETA DE PRODUCTO */
+function buildCardHTML(p) {
 const generoLabel = p.genero === 'masculino' ? 'HOMBRE' : (p.genero === 'femenino' ? 'MUJER' : 'UNISEX');
 const badgeInfo = p.concentracion ? `${generoLabel} · ${p.presentacion} · ${p.concentracion}` : `${generoLabel} · ${p.presentacion}`;
 const textWa = encodeURIComponent(`Hola, ASMperfumes. Estoy interesado/a en el perfume ${p.nombre} de ${p.presentacion}, con un precio de ${p.precioStr}. ¿Me pueden confirmar su disponibilidad y cómo puedo realizar la compra?`);
 const urlWa = `https://wa.me/${PHONE_NUMBER}?text=${textWa}`;
 
-container.innerHTML += `
-<div class="card">
+const soldOutClass = p.agotado ? 'is-sold-out' : '';
+const soldOutBadgeHTML = p.agotado ? `<div class="sold-out-badge">AGOTADO</div>` : '';
+const btnCartText = p.agotado ? 'AGOTADO' : 'Agregar';
+const btnCartDisabled = p.agotado ? 'disabled' : '';
+
+return `
+<div class="card ${soldOutClass}">
 <div class="card-img-container" onclick="showProductDetail(${p.id})">
 <img src="${p.img}" alt="${p.nombre}" class="card-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'250\'><rect width=\'100%\' height=\'100%\' fill=\'%23F7F5F0\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Montserrat\' font-size=\'10\' fill=\'%23777777\'>FOTOGRAFÍA PRÓXIMAMENTE</text></svg>';">
 </div>
 <div class="card-content">
 <div>
+${soldOutBadgeHTML}
 <span class="card-category">${badgeInfo}</span>
 <h3 class="card-title" onclick="showProductDetail(${p.id})">${p.nombre}</h3>
 <div class="card-price">${p.precioStr}</div>
 </div>
 <div class="card-actions">
-<button class="btn-add-cart" onclick="addToCart(${p.id})">Agregar</button>
+<button class="btn-add-cart" onclick="addToCart(${p.id})" ${btnCartDisabled}>${btnCartText}</button>
 <a href="${urlWa}" target="_blank" class="btn-wa-item" title="Consultar por WhatsApp">
 <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
 </a>
@@ -1162,21 +1230,36 @@ container.innerHTML += `
 </div>
 </div>
 `;
+}
+
+function renderFeaturedHome() {
+const container = document.getElementById('featured-container');
+container.innerHTML = '';
+const featuredList = perfumes.filter(p => p.destacado);
+featuredList.forEach(p => {
+container.innerHTML += buildCardHTML(p);
 });
 }
 
-function showHome() {
-document.getElementById('home-view').style.display = 'block';
+function hideAllViews() {
+document.getElementById('hero-carousel').style.display = 'none';
+document.getElementById('home-view').style.display = 'none';
 document.getElementById('catalogo-vista').style.display = 'none';
 document.getElementById('detalle-vista').style.display = 'none';
+document.getElementById('info-vista').style.display = 'none';
+}
+
+function showHome() {
+hideAllViews();
+document.getElementById('hero-carousel').style.display = 'block';
+document.getElementById('home-view').style.display = 'block';
 window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function filterPerfumes(cat) {
 currentCategoryFilter = cat;
-document.getElementById('home-view').style.display = 'none';
+hideAllViews();
 document.getElementById('catalogo-vista').style.display = 'block';
-document.getElementById('detalle-vista').style.display = 'none';
 
 const titleEl = document.getElementById('catalogo-title');
 const subTitleEl = document.getElementById('catalogo-subtitle');
@@ -1202,23 +1285,19 @@ window.scrollTo({ top: 0, behavior: 'smooth' });
 function applyFiltersAndSort() {
 let result = [...perfumes];
 
-// Filtro por categoría (género)
 if (currentCategoryFilter !== 'todos') {
 result = result.filter(p => p.genero === currentCategoryFilter);
 }
 
-// Filtro por barra de búsqueda activa
 if (currentSearchQuery) {
 result = result.filter(p => p.nombre.toLowerCase().includes(currentSearchQuery) || p.marca.toLowerCase().includes(currentSearchQuery));
 }
 
-// Filtro por marca seleccionada en el desplegable
 const brandVal = document.getElementById('brand-filter-select').value;
 if (brandVal !== 'todos') {
 result = result.filter(p => p.marca.toLowerCase() === brandVal.toLowerCase());
 }
 
-// Ordenamiento por precio
 const sortVal = document.getElementById('sort-select').value;
 if (sortVal === 'asc') {
 result.sort((a, b) => a.precioNum - b.precioNum);
@@ -1239,41 +1318,15 @@ return;
 }
 
 data.forEach(p => {
-const generoLabel = p.genero === 'masculino' ? 'HOMBRE' : (p.genero === 'femenino' ? 'MUJER' : 'UNISEX');
-const badgeInfo = p.concentracion ? `${generoLabel} · ${p.presentacion} · ${p.concentracion}` : `${generoLabel} · ${p.presentacion}`;
-const textWa = encodeURIComponent(`Hola, ASMperfumes. Estoy interesado/a en el perfume ${p.nombre} de ${p.presentacion}, con un precio de ${p.precioStr}. ¿Me pueden confirmar su disponibilidad y cómo puedo realizar la compra?`);
-const urlWa = `https://wa.me/${PHONE_NUMBER}?text=${textWa}`;
-
-container.innerHTML += `
-<div class="card">
-<div class="card-img-container" onclick="showProductDetail(${p.id})">
-<img src="${p.img}" alt="${p.nombre}" class="card-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'250\'><rect width=\'100%\' height=\'100%\' fill=\'%23F7F5F0\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Montserrat\' font-size=\'10\' fill=\'%23777777\'>FOTOGRAFÍA PRÓXIMAMENTE</text></svg>';">
-</div>
-<div class="card-content">
-<div>
-<span class="card-category">${badgeInfo}</span>
-<h3 class="card-title" onclick="showProductDetail(${p.id})">${p.nombre}</h3>
-<div class="card-price">${p.precioStr}</div>
-</div>
-<div class="card-actions">
-<button class="btn-add-cart" onclick="addToCart(${p.id})">Agregar</button>
-<a href="${urlWa}" target="_blank" class="btn-wa-item" title="Consultar por WhatsApp">
-<svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-</a>
-</div>
-</div>
-</div>
-`;
+container.innerHTML += buildCardHTML(p);
 });
 }
 
-// VISTA DE DETALLE INDIVIDUAL CON NOTAS FRAGRANTICA
 function showProductDetail(id) {
 const p = perfumes.find(item => item.id === id);
 if (!p) return;
 
-document.getElementById('home-view').style.display = 'none';
-document.getElementById('catalogo-vista').style.display = 'none';
+hideAllViews();
 document.getElementById('detalle-vista').style.display = 'block';
 
 const generoTexto = p.genero === 'masculino' ? 'hombre' : (p.genero === 'femenino' ? 'mujer' : 'unisex');
@@ -1281,13 +1334,18 @@ const concTexto = p.concentracion ? `en concentración Eau de Parfum (${p.concen
 const textWa = encodeURIComponent(`Hola, ASMperfumes. Tengo dudas sobre la fragancia ${p.nombre}. ¿Me pueden asesorar?`);
 const urlWa = `https://wa.me/${PHONE_NUMBER}?text=${textWa}`;
 
+const soldOutBadge = p.agotado ? `<div class="sold-out-badge" style="margin-bottom: 12px;">AGOTADO ACTUAMENTE</div>` : '';
+const btnAddDisabled = p.agotado ? 'disabled' : '';
+const btnAddText = p.agotado ? 'AGOTADO' : 'Agregar al carrito';
+
 const container = document.getElementById('detalle-content-container');
 container.innerHTML = `
-<div class="detalle-img-container">
+<div class="detalle-img-container" style="${p.agotado ? 'opacity: 0.6;' : ''}">
 <img src="${p.img}" alt="${p.nombre}" class="detalle-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'250\'><rect width=\'100%\' height=\'100%\' fill=\'%23F7F5F0\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Montserrat\' font-size=\'10\' fill=\'%23777777\'>FOTOGRAFÍA PRÓXIMAMENTE</text></svg>';">
 </div>
 <div class="detalle-info">
-<h2>${p.nombre}</h2>
+${soldOutBadge}
+<h2 style="${p.agotado ? 'text-decoration: line-through; color: var(--subtitulo-gris);' : ''}">${p.nombre}</h2>
 <div class="detalle-price">${p.precioStr}</div>
 <div class="detalle-desc">
 ${p.nombre} es una fragancia para ${generoTexto} en presentación de ${p.presentacion}, ${concTexto}. En ASMperfumes ofrecemos perfumes 100 % originales. Escríbenos por WhatsApp para resolver tus dudas sobre esta fragancia.
@@ -1303,7 +1361,7 @@ ${p.nombre} es una fragancia para ${generoTexto} en presentación de ${p.present
 <h4>Notas Olfativas (Fragrantica)</h4>
 <div class="note-category"><strong>Salida:</strong> ${p.salida || 'Notas cítricas y aromáticas.'}</div>
 <div class="note-category"><strong>Corazón:</strong> ${p.corazon || 'Acordes florales y especiados.'}</div>
-<div class="note-category"><strong>Fondo:</strong> ${p.fondoo || p.fondo || 'Ámbar, maderas y almizcle.'}</div>
+<div class="note-category"><strong>Fondo:</strong> ${p.fondo || 'Ámbar, maderas y almizcle.'}</div>
 </div>
 
 <div class="quantity-selector">
@@ -1312,7 +1370,7 @@ ${p.nombre} es una fragancia para ${generoTexto} en presentación de ${p.present
 <button onclick="adjustDetailQty(1)">+</button>
 </div>
 
-<button class="btn-detalle-agregar" onclick="addDetailToCart(${p.id})">Agregar al carrito</button>
+<button class="btn-detalle-agregar" onclick="addDetailToCart(${p.id})" ${btnAddDisabled}>${btnAddText}</button>
 <a href="${urlWa}" target="_blank" class="btn-detalle-wa">
 <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
 Consultar por WhatsApp
@@ -1320,6 +1378,79 @@ Consultar por WhatsApp
 <div class="detalle-footer-note">Disponibilidad y costo de envío se confirman por WhatsApp.</div>
 </div>
 `;
+window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* --- NAVEGACIÓN Y CONTENIDO DE PÁGINAS DE INFORMACIÓN --- */
+const infoData = {
+esencia: {
+title: "Nuestra Esencia",
+content: `
+<p>En <strong>ASMperfumes</strong> creemos que una fragancia es más que un simple accesorio: es una declaración de identidad, un sello personal que perdura en la memoria de quienes te rodean.</p>
+<h3>Garantía de Autenticidad</h3>
+<p>Nos especializamos en la comercialización exclusiva de perfumes 100 % originales importados directamente de casas perfumistas de prestigio internacional como Lattafa, Afnan, Armaf, Rasasi y Maison Alhambra.</p>
+<p>Cada pieza de nuestra selección ha sido curada garantizando su procedencia, fijación y autenticidad original.</p>
+`
+},
+contacto: {
+title: "Contacto",
+content: `
+<p>Estamos siempre listos para brindarte la mejor asesoría personalizada en la elección de tu perfume ideal.</p>
+<h3>Líneas Oficiales de Atención</h3>
+<p>• <strong>WhatsApp Directo:</strong> +57 301 873 8631</p>
+<p>• <strong>Instagram:</strong> @asmperfumes_</p>
+<p>• <strong>TikTok:</strong> @asmperfumes_</p>
+<br>
+<a href="https://wa.me/573018738631" target="_blank" class="btn-editorial" style="display:inline-block;">Escribir a WhatsApp</a>
+`
+},
+faq: {
+title: "Preguntas Frecuentes",
+content: `
+<h3>¿Los perfumes son 100 % originales?</h3>
+<p>Sí, absolutamente. En ASMperfumes garantizamos la autenticidad total de todos los perfumes comercializados en nuestra tienda. No vendemos réplicas ni imitaciones.</p>
+<h3>¿Cuánto tarda en llegar mi pedido?</h3>
+<p>Los envíos nacionales tardan generalmente de 2 a 4 días hábiles dependiendo de la ciudad de destino.</p>
+<h3>¿Cómo puedo realizar el pago?</h3>
+<p>Al finalizar tu pedido en la página, se genera un resumen automático para enviar a nuestro WhatsApp oficial, donde te brindaremos las cuentas autorizadas para transferencia (Nequi, Bancolombia, etc.).</p>
+`
+},
+politicas: {
+title: "Políticas de Compra",
+content: `
+<p>Para garantizar una excelente experiencia de servicio en ASMperfumes, aplicamos los siguientes lineamientos:</p>
+<p>1. Todos los pedidos están sujetos a verificación de disponibilidad inmediata antes del despacho.</p>
+<p>2. El proceso de envío inicia una vez verificado el pago correspondiente.</p>
+<p>3. Los datos de guía y rastreo se entregan directamente al cliente a través de WhatsApp.</p>
+`
+},
+envios: {
+title: "Envíos y Devoluciones",
+content: `
+<h3>Envíos Nacionales</h3>
+<p>Realizamos despachos a todos los municipios y ciudades de Colombia a través de transportadoras aliadas de amplia trayectoria.</p>
+<p><strong>Envío Gratis:</strong> Aplica a compras superiores a $250.000 COP.</p>
+<h3>Garantía y Devoluciones</h3>
+<p>Si el producto presenta algún inconveniente imputable al transporte, el cliente debe notificar dentro de las primeras 24 horas posteriores a la recepción para gestionar la garantía correspondiente.</p>
+`
+},
+privacidad: {
+title: "Privacidad y Tratamiento de Datos",
+content: `
+<p>En cumplimiento de las normativas de protección de datos personales, ASMperfumes garantiza la confidencialidad absoluta de la información proporcionada por nuestros clientes al momento de realizar sus consultas o pedidos.</p>
+<p>Tus datos (nombre, ciudad y teléfono) únicamente serán utilizados para la gestión logísticas de tu compra y la atención personalizada vía WhatsApp.</p>
+`
+}
+};
+
+function openInfoPage(key) {
+const data = infoData[key];
+if (!data) return;
+
+hideAllViews();
+document.getElementById('info-title').textContent = data.title;
+document.getElementById('info-content').innerHTML = data.content;
+document.getElementById('info-vista').style.display = 'block';
 window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1333,6 +1464,8 @@ if (span) span.textContent = detailQtyValue;
 
 function addDetailToCart(id) {
 const product = perfumes.find(p => p.id === id);
+if (product.agotado) return;
+
 const existing = cart.find(item => item.id === id);
 if (existing) {
 existing.quantity += detailQtyValue;
@@ -1354,7 +1487,6 @@ document.getElementById('side-menu').classList.toggle('open');
 document.getElementById('nav-overlay').classList.toggle('open');
 }
 
-// SISTEMA TOAST
 let toastTimeout = null;
 function showToast(productName) {
 const toast = document.getElementById('toast-notification');
@@ -1374,6 +1506,8 @@ document.getElementById('toast-notification').classList.remove('show');
 
 function addToCart(id) {
 const product = perfumes.find(p => p.id === id);
+if (product.agotado) return;
+
 const existing = cart.find(item => item.id === id);
 if (existing) {
 existing.quantity += 1;
